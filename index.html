@@ -3,11 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>多人連線口袋 KTV</title>
+  <title>YUNUBE KTV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --neon-pink: #ff007f;
+      --neon-cyan: #00f3ff;
+      --neon-purple: #9d00ff;
+      --neon-yellow: #f8e71c;
+      --dark-bg: #09090e;
+      --panel-bg: rgba(18, 18, 28, 0.85);
+      --border-glow: rgba(0, 243, 255, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #121212;
+      font-family: 'Rajdhani', 'Noto Sans TC', -apple-system, sans-serif;
+      background-color: var(--dark-bg);
+      background-image: 
+        linear-gradient(rgba(0, 243, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 127, 0.04) 1px, transparent 1px);
+      background-size: 30px 30px;
       color: #fff;
       display: flex;
       justify-content: center;
@@ -15,136 +38,222 @@
       min-height: 100vh;
       margin: 0;
       padding: 16px;
-      box-sizing: border-box;
     }
-    .ktv-card {
-      background: #1e1e1e;
-      border-radius: 16px;
-      padding: 20px;
+
+    .cyber-frame {
       width: 100%;
       max-width: 520px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-    }
-    h1 {
-      margin-top: 0;
-      font-size: 1.4rem;
-      text-align: center;
-      color: #ff3366;
-    }
-    .warning {
-      background: #4a2600;
-      color: #ffb86c;
-      padding: 10px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      line-height: 1.4;
-      margin-bottom: 14px;
-      border-left: 4px solid #ff9900;
-    }
-    .section {
-      background: #2a2a2a;
-      padding: 14px;
+      background: var(--panel-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glow);
       border-radius: 12px;
-      margin-bottom: 14px;
+      padding: 22px;
+      box-shadow: 0 0 35px rgba(0, 243, 255, 0.15), inset 0 0 20px rgba(255, 0, 127, 0.05);
+      position: relative;
     }
-    .section-title {
-      font-size: 0.95rem;
-      font-weight: bold;
+
+    /* 頂部賽博霓虹招牌 */
+    .brand-title {
+      font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: 4px;
+      color: #fff;
+      text-transform: uppercase;
+      margin: 0 0 4px 0;
+      text-shadow: 
+        0 0 7px #fff,
+        0 0 14px var(--neon-pink),
+        0 0 25px var(--neon-pink),
+        0 0 40px var(--neon-purple);
+    }
+
+    .brand-subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--neon-cyan);
+      letter-spacing: 3px;
+      margin-bottom: 16px;
+      opacity: 0.9;
+      text-transform: uppercase;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
+    }
+
+    .warning-box {
+      background: rgba(248, 231, 28, 0.08);
+      border: 1px dashed var(--neon-yellow);
+      color: var(--neon-yellow);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+      line-height: 1.4;
+      text-shadow: 0 0 8px rgba(248, 231, 28, 0.4);
+    }
+
+    .cyber-panel {
+      background: rgba(10, 10, 18, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 3px solid var(--neon-cyan);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .panel-header {
+      font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--neon-cyan);
       margin-bottom: 10px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 6px;
     }
+
     button {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
+      font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
+      letter-spacing: 1px;
+      font-size: 0.85rem;
+      padding: 12px;
+      border-radius: 6px;
       border: none;
-      font-size: 0.9rem;
-      font-weight: bold;
       cursor: pointer;
-      background: #ff3366;
-      color: white;
-      transition: background 0.2s;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      width: 100%;
     }
-    button:active {
-      opacity: 0.8;
+
+    .btn-neon-pink {
+      background: linear-gradient(135deg, #ff007f, #b30059);
+      color: #fff;
+      box-shadow: 0 0 14px rgba(255, 0, 127, 0.4);
     }
-    button.active {
-      background: #00cc88;
+
+    .btn-neon-pink:active {
+      transform: scale(0.98);
+      box-shadow: 0 0 22px rgba(255, 0, 127, 0.8);
     }
-    .btn-secondary {
-      background: #444;
+
+    .btn-neon-pink.active {
+      background: linear-gradient(135deg, #00f3ff, #0099ff);
+      color: #000;
+      box-shadow: 0 0 16px rgba(0, 243, 255, 0.7);
+    }
+
+    .btn-sub {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       width: auto;
       padding: 8px 12px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
-    .btn-secondary:hover {
-      background: #555;
+
+    .btn-sub:hover, .btn-sub:active {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
     }
+
     .btn-next {
-      background: #e67e22;
-      width: 100%;
+      background: linear-gradient(135deg, #f39c12, #e74c3c);
+      color: #fff;
       margin-top: 8px;
+      box-shadow: 0 0 12px rgba(243, 156, 18, 0.3);
     }
-    .control-row {
+
+    /* 音量動態跳動條 (VU Meter) */
+    .vu-meter-bar {
+      height: 6px;
+      background: #111;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .vu-meter-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00f3ff, #f8e71c 70%, #ff007f 90%);
+      transition: width 0.05s ease-out;
+      box-shadow: 0 0 8px #00f3ff;
+    }
+
+    .fader-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-top: 10px;
       font-size: 0.85rem;
-      background: #222;
+      background: rgba(0, 0, 0, 0.4);
       padding: 8px 10px;
-      border-radius: 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .control-row span {
-      min-width: 85px;
-    }
-    .val-display {
-      min-width: 40px;
-      text-align: right;
+    .fader-label {
       color: #aaa;
+      min-width: 80px;
+      font-size: 0.8rem;
+    }
+    .fader-val {
+      min-width: 45px;
+      text-align: right;
+      font-family: 'Orbitron', monospace;
+      color: var(--neon-cyan);
       font-size: 0.8rem;
     }
     input[type="range"] {
       flex: 1;
       margin: 0 10px;
-      accent-color: #ff3366;
+      accent-color: var(--neon-pink);
     }
-    .input-group {
+
+    .input-line {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       margin-bottom: 8px;
     }
     input[type="text"] {
       flex: 1;
-      padding: 8px 10px;
-      border-radius: 8px;
-      border: 1px solid #444;
-      background: #181818;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.6);
       color: #fff;
-      font-size: 0.85rem;
+      font-family: 'Rajdhani', 'Noto Sans TC', sans-serif;
+      font-size: 0.9rem;
       outline: none;
     }
     input[type="text"]:focus {
-      border-color: #ff3366;
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
     }
-    .room-status {
-      font-size: 0.8rem;
-      color: #00cc88;
-      margin-top: 8px;
+
+    .room-badge {
+      font-size: 0.85rem;
+      color: var(--neon-cyan);
+      margin-top: 6px;
       word-break: break-all;
     }
-    .video-wrapper {
+
+    .video-deck {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      border-radius: 10px;
+      border-radius: 8px;
       background: #000;
+      border: 1px solid var(--neon-pink);
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.2);
       margin-top: 10px;
     }
-    .video-wrapper iframe {
+    .video-deck iframe {
       position: absolute;
       top: 0;
       left: 0;
@@ -152,116 +261,138 @@
       height: 100%;
       border: none;
     }
-    .mobile-unmute-tip {
-      background: #2c3e50;
-      color: #ecf0f1;
-      padding: 8px;
+
+    .unmute-alert {
+      background: linear-gradient(90deg, #9d00ff, #ff007f);
+      color: #fff;
+      padding: 10px;
       border-radius: 6px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       text-align: center;
       margin-top: 8px;
       cursor: pointer;
       display: none;
-      border: 1px solid #3498db;
+      animation: pulseGlow 1.2s infinite alternate;
     }
-    /* 待播清單樣式 */
-    .playlist-box {
-      margin-top: 12px;
-      background: #1e1e1e;
-      border-radius: 8px;
-      padding: 10px;
-      max-height: 180px;
+    @keyframes pulseGlow {
+      from { box-shadow: 0 0 8px #9d00ff; }
+      to { box-shadow: 0 0 20px #ff007f; }
+    }
+
+    .track-list {
+      margin-top: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 6px;
+      padding: 8px;
+      max-height: 170px;
       overflow-y: auto;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .playlist-item {
+    .track-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       padding: 6px 8px;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .playlist-item:last-child {
-      border-bottom: none;
+    .track-item.playing {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
+      border-left: 2px solid var(--neon-cyan);
+      padding-left: 8px;
     }
-    .playlist-item.current {
-      color: #00cc88;
-      font-weight: bold;
-    }
-    .empty-list {
-      color: #777;
+    .empty-queue {
+      color: #666;
       text-align: center;
       font-size: 0.8rem;
-      padding: 8px;
+      padding: 12px;
     }
-    #remoteAudio {
-      display: none;
-    }
+    #remoteAudio { display: none; }
   </style>
 </head>
 <body>
 
-  <div class="ktv-card">
-    <h1>🎤 多人連線口袋 KTV</h1>
+  <div class="cyber-frame">
+    <!-- 主招牌中文與英文名稱 -->
+    <div class="brand-title">YUNUBE大舞廳</div>
+    <div class="brand-subtitle">// YUNUBE KTV //</div>
 
-    <div class="warning">
-      ⚠️ <strong>必須戴上有線耳機！</strong> 使用喇叭會引發尖叫迴授嘯叫。
+    <div class="warning-box">
+      ⚠️ <strong>必須佩戴有線耳機！</strong> 外放喇叭會將聲波反覆震盪收錄，引發高頻尖叫嘯叫。
     </div>
 
-    <!-- 1. 混音控制台 -->
-    <div class="section">
-      <div class="section-title">🎚️ 混音台：音量調整</div>
-      <button id="micToggleBtn">開啟耳返監聽</button>
+    <!-- 1. 歌手監聽調音台 -->
+    <div class="cyber-panel">
+      <div class="panel-header">
+        <span>[01] MONITOR & MIXER</span>
+        <span style="font-size: 0.7rem; color: #777;">LOW-LATENCY</span>
+      </div>
+
+      <button id="micToggleBtn" class="btn-neon-pink">啟動監聽耳返 (MIC MONITOR)</button>
       
-      <div class="control-row">
-        <span>🎙️ 耳返音量</span>
+      <!-- 動態音量跳動條 (歌聲響度計) -->
+      <div class="vu-meter-bar">
+        <div class="vu-meter-fill" id="vuMeter"></div>
+      </div>
+
+      <div class="fader-row">
+        <span class="fader-label">🎙️ 耳返音量</span>
         <input type="range" id="micVolume" min="0" max="2" step="0.05" value="1">
-        <span class="val-display" id="micVal">100%</span>
+        <span class="fader-val" id="micVal">100%</span>
       </div>
 
-      <div class="control-row">
-        <span>🎵 歌曲伴奏</span>
+      <div class="fader-row">
+        <span class="fader-label">🎵 伴奏音量</span>
         <input type="range" id="musicVolume" min="0" max="1" step="0.05" value="0.8">
-        <span class="val-display" id="musicVal">80%</span>
+        <span class="fader-val" id="musicVal">80%</span>
       </div>
     </div>
 
-    <!-- 2. 線上包廂 -->
-    <div class="section">
-      <div class="section-title">👥 好友連線包廂</div>
-      <button class="btn-secondary" id="createRoomBtn" style="width: 100%; margin-bottom: 8px;">建立新包廂（我是房長）</button>
-      
-      <div class="input-group">
-        <input type="text" id="joinRoomInput" placeholder="輸入好友的包廂代碼">
-        <button class="btn-secondary" id="joinRoomBtn">加入包廂</button>
+    <!-- 2. 包廂配對連線 -->
+    <div class="cyber-panel" style="border-left-color: var(--neon-purple);">
+      <div class="panel-header">
+        <span style="color: var(--neon-purple);">[02] NET-LINK ROOM</span>
+        <span style="font-size: 0.7rem; color: #777;">PEER P2P</span>
       </div>
-      <div class="room-status" id="roomStatus">尚未連線</div>
+      
+      <button class="btn-sub" id="createRoomBtn" style="width: 100%; margin-bottom: 8px;">建立舞廳包廂 (HOST)</button>
+      
+      <div class="input-line">
+        <input type="text" id="joinRoomInput" placeholder="輸入好友包廂代碼...">
+        <button class="btn-sub" id="joinRoomBtn">連線 (JOIN)</button>
+      </div>
+
+      <div class="room-badge" id="roomStatus">舞廳離線中</div>
     </div>
 
-    <!-- 3. YouTube 點播與播放器 -->
-    <div class="section">
-      <div class="section-title">🎵 伴奏歌曲與播放區</div>
-      
-      <div class="input-group">
-        <input type="text" id="ytUrlInput" placeholder="貼上 YouTube 伴奏/KTV 網址">
-        <button class="btn-secondary" id="addQueueBtn">加入歌單</button>
+    <!-- 3. 伴奏點歌甲板 -->
+    <div class="cyber-panel" style="border-left-color: var(--neon-pink);">
+      <div class="panel-header">
+        <span style="color: var(--neon-pink);">[03] MEDIA DECK</span>
+        <span style="font-size: 0.7rem; color: #777;">YOUTUBE SYNC</span>
       </div>
 
-      <!-- 手機端防阻擋提示 -->
-      <div class="mobile-unmute-tip" id="unmuteTip">
-        👉 偵測到新歌曲！若畫面未自動播放，請點此解鎖同步影音 🔊
+      <div class="input-line">
+        <input type="text" id="ytUrlInput" placeholder="貼上 YouTube 伴奏/KTV 網址...">
+        <button class="btn-sub" id="addQueueBtn">點歌</button>
       </div>
 
-      <div class="video-wrapper" id="videoWrapper">
+      <div class="unmute-alert" id="unmuteTip">
+        ⚡ 伴奏已就緒！點此解鎖同步影音播放 🔊
+      </div>
+
+      <div class="video-deck">
         <div id="ytPlayer"></div>
       </div>
 
-      <button class="btn-next" id="nextSongBtn">⏭️ 切歌 / 下一首</button>
+      <button class="btn-next" id="nextSongBtn">⏭️ 切歌 / 下一首 (SKIP TRACK)</button>
 
-      <!-- 待播清單 -->
-      <div class="section-title" style="margin-top: 14px; font-size: 0.85rem;">📋 待播清單佇列</div>
-      <div class="playlist-box" id="playlistBox">
-        <div class="empty-list">目前歌單是空的，快貼上伴奏網址加入吧！</div>
+      <div class="panel-header" style="margin-top: 14px; font-size: 0.75rem;">
+        <span>QUEUE // 舞廳歌單</span>
+      </div>
+      <div class="track-list" id="playlistBox">
+        <div class="empty-queue">歌單待命中，請貼上 YouTube 伴奏網址加入佇列</div>
       </div>
     </div>
   </div>
@@ -274,18 +405,21 @@
 
   <script>
     /* ====================================================
-       1. 音訊核心與麥克風耳返 (Web Audio API)
+       1. 音訊核心、耳返監聽與即時 VU Meter 跳動條
        ==================================================== */
     let audioCtx = null;
     let micStream = null;
     let micGainNode = null;
+    let analyserNode = null;
     let isMonitoring = false;
+    let animFrameId = null;
 
     const micBtn = document.getElementById('micToggleBtn');
     const micVolSlider = document.getElementById('micVolume');
     const micValDisplay = document.getElementById('micVal');
     const musicVolSlider = document.getElementById('musicVolume');
     const musicValDisplay = document.getElementById('musicVal');
+    const vuMeter = document.getElementById('vuMeter');
 
     async function ensureAudioContext() {
       if (!audioCtx) {
@@ -297,6 +431,25 @@
       }
     }
 
+    function updateVUMeter() {
+      if (!analyserNode || !isMonitoring) {
+        vuMeter.style.width = '0%';
+        return;
+      }
+      const dataArray = new Uint8Array(analyserNode.frequencyBinCount);
+      analyserNode.getByteFrequencyData(dataArray);
+
+      let sum = 0;
+      for (let i = 0; i < dataArray.length; i++) {
+        sum += dataArray[i];
+      }
+      let avg = sum / dataArray.length;
+      let percent = Math.min(100, Math.round((avg / 128) * 100 * 1.5));
+      vuMeter.style.width = percent + '%';
+
+      animFrameId = requestAnimationFrame(updateVUMeter);
+    }
+
     micBtn.addEventListener('click', async () => {
       await ensureAudioContext();
       if (!isMonitoring) {
@@ -306,17 +459,24 @@
               audio: { echoCancellation: false, autoGainControl: false, noiseSuppression: false, latency: 0 }
             });
           }
+
           const micSource = audioCtx.createMediaStreamSource(micStream);
           micGainNode = audioCtx.createGain();
           micGainNode.gain.value = parseFloat(micVolSlider.value);
+
+          analyserNode = audioCtx.createAnalyser();
+          analyserNode.fftSize = 64;
+
           micSource.connect(micGainNode);
-          micGainNode.connect(audioCtx.destination);
+          micGainNode.connect(analyserNode);
+          analyserNode.connect(audioCtx.destination);
 
           isMonitoring = true;
-          micBtn.textContent = '🔊 耳返已開啟（點此關閉）';
+          micBtn.textContent = '🔊 舞廳監聽中 (MONITOR ACTIVE)';
           micBtn.classList.add('active');
+          updateVUMeter();
         } catch (err) {
-          alert('無法開啟麥克風，請檢查權限！');
+          alert('無法取得麥克風，請檢查權限！');
         }
       } else {
         if (micStream) {
@@ -324,7 +484,9 @@
           micStream = null;
         }
         isMonitoring = false;
-        micBtn.textContent = '開啟耳返監聽';
+        cancelAnimationFrame(animFrameId);
+        vuMeter.style.width = '0%';
+        micBtn.textContent = '啟動監聽耳返 (MIC MONITOR)';
         micBtn.classList.remove('active');
       }
     });
@@ -344,52 +506,46 @@
     });
 
     /* ====================================================
-       2. 播放清單佇列資料結構
+       2. 待播清單與 YouTube 播放器控制
        ==================================================== */
-    let playlist = []; // 結構: [{ id: 'xxx', title: 'Song 1' }]
+    let playlist = [];
     let currentSongIndex = -1;
+    let ytPlayer = null;
+    let isPlayerReady = false;
 
     const playlistBox = document.getElementById('playlistBox');
     const unmuteTip = document.getElementById('unmuteTip');
+    const ytUrlInput = document.getElementById('ytUrlInput');
+    const addQueueBtn = document.getElementById('addQueueBtn');
+    const nextSongBtn = document.getElementById('nextSongBtn');
 
     function renderPlaylist() {
       if (playlist.length === 0) {
-        playlistBox.innerHTML = '<div class="empty-list">目前歌單是空的，快貼上伴奏網址加入吧！</div>';
+        playlistBox.innerHTML = '<div class="empty-queue">歌單待命中，請貼上 YouTube 伴奏網址加入佇列</div>';
         return;
       }
       let html = '';
       playlist.forEach((item, index) => {
-        let tag = '';
-        let className = 'playlist-item';
+        let tag = `#${index + 1}`;
+        let itemClass = 'track-item';
         if (index === currentSongIndex) {
-          tag = '【正在播放】';
-          className += ' current';
+          tag = '▶ 舞廳正熱播';
+          itemClass += ' playing';
         } else if (index === currentSongIndex + 1) {
-          tag = '【下一首】';
-        } else {
-          tag = `#${index + 1}`;
+          tag = 'NEXT';
         }
-        html += `<div class="${className}"><span>${tag} ${item.title || item.id}</span></div>`;
+        html += `<div class="${itemClass}">
+          <span>[${tag}] ${item.title}</span>
+        </div>`;
       });
       playlistBox.innerHTML = html;
     }
-
-    /* ====================================================
-       3. YouTube 播放器與多端同步
-       ==================================================== */
-    let ytPlayer = null;
-    let isPlayerReady = false;
-    const videoWrapper = document.getElementById('videoWrapper');
-    const ytUrlInput = document.getElementById('ytUrlInput');
-    const addQueueBtn = document.getElementById('addQueueBtn');
-    const nextSongBtn = document.getElementById('nextSongBtn');
 
     function extractVideoID(url) {
       const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
       return match ? match[1] : null;
     }
 
-    // 初始化 YouTube 播放器
     window.onYouTubeIframeAPIReady = function() {
       ytPlayer = new YT.Player('ytPlayer', {
         height: '100%',
@@ -406,7 +562,6 @@
             event.target.setVolume(parseFloat(musicVolSlider.value) * 100);
           },
           onStateChange: (event) => {
-            // 當歌曲唱完時 (0 = YT.PlayerState.ENDED)，自動播放下一首
             if (event.data === YT.PlayerState.ENDED) {
               playNextSong();
             }
@@ -420,18 +575,17 @@
         setTimeout(() => playVideo(videoId), 500);
         return;
       }
-      unmuteTip.style.display = 'block'; // 顯示提示讓手機觸碰解鎖
+      unmuteTip.style.display = 'block';
 
       try {
         ytPlayer.loadVideoById(videoId);
         ytPlayer.setVolume(parseFloat(musicVolSlider.value) * 100);
         ytPlayer.playVideo();
       } catch (e) {
-        console.warn('播放被攔截，等待使用者點擊解鎖', e);
+        console.warn('播放被攔截，點擊提示解除限制', e);
       }
     }
 
-    // 解鎖按鈕（iOS / 手機點一下即可強制發聲）
     unmuteTip.addEventListener('click', () => {
       if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
         ytPlayer.playVideo();
@@ -440,7 +594,6 @@
       unmuteTip.style.display = 'none';
     });
 
-    // 播放指定索引的歌曲
     function playTrackAtIndex(index) {
       if (index >= 0 && index < playlist.length) {
         currentSongIndex = index;
@@ -449,56 +602,49 @@
       }
     }
 
-    // 切歌 / 播下一首
     function playNextSong() {
       if (currentSongIndex + 1 < playlist.length) {
         playTrackAtIndex(currentSongIndex + 1);
-        broadcastState(); // 同步給其他人
+        broadcastState();
       } else {
-        alert('待播清單已經唱完囉！');
+        alert('舞廳曲目已全數播畢！');
       }
     }
 
-    nextSongBtn.addEventListener('click', () => {
-      playNextSong();
-    });
+    nextSongBtn.addEventListener('click', playNextSong);
 
-    // 加入歌單
     addQueueBtn.addEventListener('click', () => {
       const url = ytUrlInput.value.trim();
       const videoId = extractVideoID(url);
       if (!videoId) {
-        alert('請輸入有效的 YouTube 伴奏連結！');
+        alert('請輸入合法的 YouTube 網址！');
         return;
       }
 
-      const songItem = { id: videoId, title: 'YouTube 伴奏 (' + videoId.substring(0, 5) + ')' };
+      const songItem = { id: videoId, title: '伴奏曲目 (' + videoId.substring(0, 6) + ')' };
       playlist.push(songItem);
       ytUrlInput.value = '';
 
-      // 若目前沒有歌在播，直接開始播這首
       if (currentSongIndex === -1) {
         currentSongIndex = 0;
         playTrackAtIndex(0);
       } else {
         renderPlaylist();
       }
-
       broadcastState();
     });
 
     /* ====================================================
-       4. PeerJS 雙向多端同步網路層
+       3. PeerJS 連線與多端即時廣播
        ==================================================== */
     let peer = null;
-    let connections = []; // 保存所有連線中的頻道
+    let connections = [];
     const roomStatus = document.getElementById('roomStatus');
     const createRoomBtn = document.getElementById('createRoomBtn');
     const joinRoomBtn = document.getElementById('joinRoomBtn');
     const joinRoomInput = document.getElementById('joinRoomInput');
     const remoteAudio = document.getElementById('remoteAudio');
 
-    // 廣播最新歌單與播放進度給包廂所有人
     function broadcastState() {
       const payload = {
         type: 'SYNC_STATE',
@@ -506,9 +652,7 @@
         currentSongIndex: currentSongIndex
       };
       connections.forEach(conn => {
-        if (conn && conn.open) {
-          conn.send(payload);
-        }
+        if (conn && conn.open) conn.send(payload);
       });
     }
 
@@ -519,7 +663,6 @@
         currentSongIndex = data.currentSongIndex;
         renderPlaylist();
 
-        // 如果歌曲切換了，同步載入播放
         if (currentSongIndex !== -1 && currentSongIndex !== prevIndex) {
           if (playlist[currentSongIndex]) {
             playVideo(playlist[currentSongIndex].id);
@@ -531,17 +674,14 @@
     function setupDataConnection(conn) {
       connections.push(conn);
       conn.on('open', () => {
-        roomStatus.textContent = '🟢 已成功建立雙向包廂同步！';
-        // 一連線立刻把目前的歌單同步給新加入的人
+        roomStatus.innerHTML = '<span style="color:var(--neon-cyan);">⚡ 已接入舞廳連線 (CONNECTED)</span>';
         conn.send({
           type: 'SYNC_STATE',
           playlist: playlist,
           currentSongIndex: currentSongIndex
         });
       });
-      conn.on('data', (data) => {
-        handleIncomingData(data);
-      });
+      conn.on('data', handleIncomingData);
       conn.on('close', () => {
         connections = connections.filter(c => c !== conn);
       });
@@ -551,7 +691,6 @@
       if (!peer) {
         peer = new Peer();
 
-        // 接收語音通話
         peer.on('call', async (call) => {
           await ensureAudioContext();
           if (!micStream) {
@@ -565,22 +704,17 @@
           });
         });
 
-        // 接收資料頻道 (房長接收手機端的連線)
-        peer.on('connection', (conn) => {
-          setupDataConnection(conn);
-        });
+        peer.on('connection', setupDataConnection);
       }
     }
 
-    // 房長建立包廂
     createRoomBtn.addEventListener('click', () => {
       setupPeer();
       peer.on('open', (id) => {
-        roomStatus.innerHTML = `包廂已建立！手機請輸入此代碼：<br><strong style="color:#ff3366;font-size:1.15rem;">${id}</strong>`;
+        roomStatus.innerHTML = `舞廳包廂代碼：<br><strong style="color:var(--neon-pink);font-family:'Orbitron';font-size:1.1rem;letter-spacing:1px;">${id}</strong>`;
       });
     });
 
-    // 手機加入包廂
     joinRoomBtn.addEventListener('click', async () => {
       const targetId = joinRoomInput.value.trim();
       if (!targetId) {
@@ -595,17 +729,15 @@
         });
       }
 
-      // 建立同步頻道
       const conn = peer.connect(targetId);
       setupDataConnection(conn);
 
-      // 發起麥克風對講通話
       const call = peer.call(targetId, micStream);
       call.on('stream', (remoteStream) => {
         remoteAudio.srcObject = remoteStream;
       });
 
-      roomStatus.textContent = `🟢 已連線至包廂：${targetId}`;
+      roomStatus.innerHTML = `<span style="color:var(--neon-cyan);">⚡ 已接入包廂通道：${targetId}</span>`;
     });
   </script>
 </body>
