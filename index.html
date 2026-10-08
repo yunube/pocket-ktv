@@ -3,291 +3,299 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>YUNUBE KTV</title>
+  <title>YUNUBE KTV // Y3K LIVE</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Syne:wght@700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Serif+TC:wght@700;900&family=Plus+Jakarta+Sans:wght@500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --k-pink: #ff2a85;
-      --k-cyan: #00f5d4;
-      --k-purple: #7b2cbf;
-      --k-neon: #fee440;
-      --bg-dark: #0a0b10;
-      --card-bg: rgba(18, 19, 29, 0.72);
-      --glass-panel: rgba(25, 27, 42, 0.65);
-      --border-line: rgba(255, 255, 255, 0.12);
-      --border-focus: rgba(0, 245, 212, 0.6);
+      --y3k-cyan: #00f0ff;
+      --y3k-pink: #ff007f;
+      --y3k-violet: #8a2be2;
+      --y3k-chrome: #e0e6ed;
+      --void-black: #04060b;
+      --liquid-panel: rgba(14, 18, 28, 0.72);
+      --holo-border: rgba(0, 240, 255, 0.28);
+      --metal-gradient: linear-gradient(135deg, #ffffff 0%, #b8c4d4 40%, #566479 100%);
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
-      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', -apple-system, sans-serif;
-      background-color: var(--bg-dark);
+      font-family: 'Space Grotesk', 'Plus Jakarta Sans', 'Noto Serif TC', sans-serif;
+      background-color: var(--void-black);
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(255, 42, 133, 0.18) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(0, 245, 212, 0.15) 0%, transparent 45%),
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
-      color: #f1f2f6;
+        radial-gradient(circle at 10% 10%, rgba(0, 240, 255, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 90% 90%, rgba(255, 0, 127, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.12) 0%, transparent 60%),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       margin: 0;
-      padding: 20px 14px;
+      padding: 18px 12px;
     }
 
-    .k-frame {
+    /* Y3K 外骨骼液態金屬底座 */
+    .y3k-capsule {
       width: 100%;
       max-width: 480px;
-      background: var(--card-bg);
-      backdrop-filter: blur(28px) saturate(160%);
-      -webkit-backdrop-filter: blur(28px) saturate(160%);
-      border: 1px solid var(--border-line);
-      border-radius: 28px;
+      background: var(--liquid-panel);
+      backdrop-filter: blur(32px) saturate(200%);
+      -webkit-backdrop-filter: blur(32px) saturate(200%);
+      border: 1px solid var(--holo-border);
+      border-radius: 36px;
       padding: 24px;
       box-shadow: 
-        0 24px 60px rgba(0, 0, 0, 0.7),
-        0 0 40px rgba(255, 42, 133, 0.12),
-        inset 0 1px 1px rgba(255, 255, 255, 0.25);
+        0 30px 80px rgba(0, 0, 0, 0.9),
+        0 0 50px rgba(0, 240, 255, 0.18),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4),
+        inset 0 -1px 2px rgba(0, 240, 255, 0.2);
+      position: relative;
     }
 
-    /* 頂部韓系招牌標題 */
-    .brand-section {
+    /* 頂部全息發光標頭 */
+    .y3k-brand-hub {
       text-align: center;
       margin-bottom: 20px;
       position: relative;
     }
 
-    .brand-title {
-      font-family: 'Syne', 'Noto Sans TC', sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      background: linear-gradient(135deg, #ffffff 20%, #ffd0e4 50%, var(--k-pink) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 0 0 2px 0;
-      text-transform: uppercase;
-      filter: drop-shadow(0 2px 16px rgba(255, 42, 133, 0.4));
-    }
-
-    .brand-badge {
+    .y3k-tag {
       display: inline-block;
-      font-family: 'Syne', sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      letter-spacing: 2.5px;
-      color: var(--k-cyan);
-      background: rgba(0, 245, 212, 0.08);
-      border: 1px solid rgba(0, 245, 212, 0.25);
+      letter-spacing: 3px;
+      color: var(--y3k-cyan);
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.4);
       padding: 3px 12px;
       border-radius: 100px;
       text-transform: uppercase;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+      margin-bottom: 6px;
+    }
+
+    .brand-title {
+      font-family: 'Dela Gothic One', 'Noto Serif TC', sans-serif;
+      font-size: 2.1rem;
+      letter-spacing: 4px;
+      background: linear-gradient(180deg, #ffffff 0%, #d8e5ff 40%, var(--y3k-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+      filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.5));
+    }
+
+    .brand-eng {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 5px;
+      color: var(--y3k-pink);
+      text-transform: uppercase;
+      margin-top: 2px;
+      text-shadow: 0 0 10px rgba(255, 0, 127, 0.8);
     }
 
     .earphone-alert {
-      background: rgba(254, 228, 64, 0.06);
-      border: 1px solid rgba(254, 228, 64, 0.25);
-      color: #ffeaa7;
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-size: 0.78rem;
+      background: rgba(255, 0, 127, 0.08);
+      border: 1px solid rgba(255, 0, 127, 0.3);
+      color: #ffc2df;
+      padding: 9px 14px;
+      border-radius: 16px;
+      font-size: 0.76rem;
       line-height: 1.45;
       margin-bottom: 18px;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
     }
 
-    /* 韓系模組面板 */
-    .k-panel {
-      background: var(--glass-panel);
-      border: 1px solid var(--border-line);
-      border-radius: 20px;
+    /* Y3K 玻璃未來面板 */
+    .holo-deck {
+      background: rgba(8, 12, 20, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 22px;
       padding: 16px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      box-shadow: 
+        inset 0 0 20px rgba(255, 255, 255, 0.02),
+        0 10px 30px rgba(0, 0, 0, 0.5);
       transition: all 0.3s ease;
     }
 
-    .k-panel:hover {
-      border-color: rgba(255, 255, 255, 0.22);
+    .holo-deck:hover {
+      border-color: rgba(0, 240, 255, 0.4);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
     }
 
-    .panel-header {
+    .deck-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
     }
 
-    .panel-title {
-      font-family: 'Syne', 'Noto Sans TC', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 1px;
+    .deck-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
       color: #fff;
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .panel-tag {
-      font-size: 0.68rem;
-      font-family: 'Syne', sans-serif;
-      color: var(--k-cyan);
-      letter-spacing: 1px;
       text-transform: uppercase;
     }
 
-    /* 韓流時尚按鈕 */
-    button {
-      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
-      font-size: 0.88rem;
+    .deck-status {
+      font-size: 0.65rem;
       font-weight: 700;
+      color: var(--y3k-cyan);
+      letter-spacing: 1px;
+    }
+
+    /* 液態金屬與水銀按鈕 */
+    button {
+      font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 800;
       padding: 12px 18px;
-      border-radius: 14px;
+      border-radius: 16px;
       border: none;
       cursor: pointer;
-      letter-spacing: 0.5px;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       width: 100%;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    .btn-main-pink {
-      background: linear-gradient(135deg, #ff2a85 0%, #d80064 100%);
-      color: #fff;
-      box-shadow: 0 8px 24px rgba(255, 42, 133, 0.35);
+    /* 主按鍵：液態金屬流動光 */
+    .btn-liquid-metal {
+      background: linear-gradient(135deg, #ffffff 0%, #b8c4d4 30%, #ff007f 100%);
+      color: #04060b;
+      box-shadow: 0 0 25px rgba(255, 0, 127, 0.4), inset 0 1px 1px #fff;
     }
-
-    .btn-main-pink:active {
+    .btn-liquid-metal:active {
       transform: scale(0.97);
-      box-shadow: 0 4px 14px rgba(255, 42, 133, 0.5);
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+    }
+    .btn-liquid-metal.active {
+      background: linear-gradient(135deg, #00f0ff 0%, #7000ff 100%);
+      color: #fff;
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.6), inset 0 1px 1px #fff;
     }
 
-    .btn-main-pink.active {
-      background: linear-gradient(135deg, #00f5d4 0%, #00bbf9 100%);
-      color: #051419;
-      box-shadow: 0 8px 24px rgba(0, 245, 212, 0.4);
-    }
-
-    .btn-pill-sub {
+    /* 輔助按鍵：微透冰晶白 */
+    .btn-holo-sub {
       background: rgba(255, 255, 255, 0.06);
-      color: #eee;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
+      color: var(--y3k-chrome);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
       padding: 9px 16px;
       width: auto;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.78rem;
     }
-
-    .btn-pill-sub:hover, .btn-pill-sub:active {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--k-cyan);
+    .btn-holo-sub:hover, .btn-holo-sub:active {
+      border-color: var(--y3k-cyan);
       color: #fff;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
     }
 
-    /* 膠囊音量跳動條 (Soundwave Pill) */
-    .vu-pill-track {
+    /* 量子音波高頻動態條 (Quantum Meter) */
+    .quantum-track {
       height: 6px;
       background: rgba(255, 255, 255, 0.08);
       border-radius: 100px;
       overflow: hidden;
-      margin: 10px 0 14px 0;
+      margin: 12px 0 14px 0;
+      position: relative;
     }
-
-    .vu-pill-active {
+    .quantum-bar {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--k-cyan), var(--k-pink));
+      background: linear-gradient(90deg, var(--y3k-cyan), var(--y3k-pink));
       border-radius: 100px;
-      transition: width 0.06s ease;
-      box-shadow: 0 0 10px var(--k-cyan);
+      transition: width 0.05s ease-out;
+      box-shadow: 0 0 12px var(--y3k-cyan);
     }
 
-    /* 極簡調音推桿卡片 */
-    .fader-card {
+    /* 極簡流線型阻尼推桿 */
+    .slider-capsule {
       display: flex;
       align-items: center;
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 14px;
-      padding: 10px 14px;
+      padding: 9px 14px;
       margin-top: 8px;
     }
-
-    .fader-label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #aaa;
+    .slider-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #8fa0b5;
       min-width: 82px;
     }
-
-    .fader-value {
-      font-family: 'Syne', sans-serif;
+    .slider-digits {
       font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--k-cyan);
+      font-weight: 800;
+      color: var(--y3k-cyan);
       min-width: 44px;
       text-align: right;
+      text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
     }
-
     input[type="range"] {
       flex: 1;
-      margin: 0 12px;
-      accent-color: var(--k-pink);
+      margin: 0 10px;
+      accent-color: var(--y3k-pink);
       height: 4px;
     }
 
-    /* 膠囊輸入欄 */
-    .input-pill-group {
+    /* 膠囊輸入列 */
+    .input-flow-row {
       display: flex;
-      gap: 8px;
-      margin-bottom: 10px;
+      gap: 6px;
+      margin-bottom: 8px;
     }
-
     input[type="text"] {
       flex: 1;
       padding: 10px 14px;
-      border-radius: 12px;
+      border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.45);
       color: #fff;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 0.85rem;
       outline: none;
       transition: border 0.2s;
     }
-
     input[type="text"]:focus {
-      border-color: var(--border-focus);
-      background: rgba(0, 0, 0, 0.45);
+      border-color: var(--y3k-cyan);
+      box-shadow: 0 0 14px rgba(0, 240, 255, 0.35);
     }
 
-    .room-indicator {
-      font-size: 0.8rem;
-      color: #bbb;
+    .network-badge {
+      font-size: 0.78rem;
+      color: var(--y3k-cyan);
       margin-top: 6px;
       word-break: break-all;
     }
 
-    /* 播放視窗甲板 */
-    .video-viewport {
+    /* 全息影音視窗 (Holo Screen) */
+    .holo-screen-frame {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      border-radius: 16px;
+      border-radius: 18px;
       background: #000;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       margin-top: 10px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
     }
-
-    .video-viewport iframe {
+    .holo-screen-frame iframe {
       position: absolute;
       top: 0;
       left: 0;
@@ -296,56 +304,54 @@
       border: none;
     }
 
-    .k-unmute-banner {
-      background: linear-gradient(135deg, rgba(123, 44, 191, 0.9), rgba(255, 42, 133, 0.9));
+    /* 手機解鎖全息條 */
+    .holo-unmute-cue {
+      background: linear-gradient(90deg, #7000ff, #ff007f);
       color: #fff;
-      font-weight: 700;
-      padding: 12px;
+      font-weight: 800;
+      padding: 11px;
       border-radius: 14px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 8px;
       cursor: pointer;
       display: none;
-      box-shadow: 0 8px 24px rgba(255, 42, 133, 0.35);
-      animation: kPulse 1.4s infinite alternate;
+      box-shadow: 0 0 25px rgba(255, 0, 127, 0.5);
+      animation: pulse3K 1.5s infinite alternate;
+    }
+    @keyframes pulse3K {
+      from { transform: scale(1); filter: brightness(1); }
+      to { transform: scale(1.02); filter: brightness(1.2); }
     }
 
-    @keyframes kPulse {
-      from { transform: scale(1); }
-      to { transform: scale(1.02); }
-    }
-
-    /* 時尚歌單面板 */
-    .track-flow {
-      margin-top: 12px;
-      background: rgba(0, 0, 0, 0.2);
+    /* Y3K 播放清單卡槽 */
+    .holo-stream-list {
+      margin-top: 10px;
+      background: rgba(0, 0, 0, 0.35);
       border-radius: 14px;
       padding: 6px 10px;
       max-height: 140px;
       overflow-y: auto;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
-
-    .track-row {
+    .stream-node {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       padding: 8px 6px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
-
-    .track-row:last-child { border-bottom: none; }
-
-    .track-row.now-on-air {
-      color: var(--k-cyan);
-      font-weight: 700;
+    .stream-node:last-child { border-bottom: none; }
+    .stream-node.streaming-active {
+      color: var(--y3k-cyan);
+      font-weight: 800;
+      text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
     }
-
-    .empty-flow {
-      color: #666;
+    .empty-stream {
+      color: #5d6b82;
       text-align: center;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       padding: 12px;
     }
 
@@ -354,93 +360,96 @@
 </head>
 <body>
 
-  <div class="k-frame">
-    <!-- 頂部招牌 -->
-    <div class="brand-section">
+  <div class="y3k-capsule">
+    <!-- 頂部 Y3K 招牌 -->
+    <div class="y3k-brand-hub">
+      <div class="y3k-tag">CORE SYSTEM // YEAR 3000</div>
       <div class="brand-title">YUNUBE大舞廳</div>
-      <div class="brand-badge">YUNUBE KTV // LIVE</div>
+      <div class="brand-eng">YUNUBE KTV // Y3K VIRTUAL</div>
     </div>
 
     <div class="earphone-alert">
-      🎧 <strong>請務必戴上有線耳機體驗！</strong><br>
-      若在 iOS 上覺得伴奏太大聲，請直接「拉高耳返增益」並使用手機實體鍵微調整體音量。
+      ⚡ <strong>超頻連線提示：請配戴有線耳機！</strong><br>
+      若在 iPhone 上覺得伴奏過大，可利用實體側鍵調低總量，並將下方「耳返增益」向右推大。
     </div>
 
-    <!-- 1. 韓系歌手監聽與混音台 -->
-    <div class="k-panel">
-      <div class="panel-header">
-        <span class="panel-title">🎚️ 歌手耳返與調音台</span>
-        <span class="panel-tag">STUDIO PRO</span>
+    <!-- 1. 歌手監聽與調音台 -->
+    <div class="holo-deck">
+      <div class="deck-head">
+        <span class="deck-title">🎚️ 歌手量子耳返</span>
+        <span class="deck-status">NEURAL LINK</span>
       </div>
 
-      <button id="micToggleBtn" class="btn-main-pink">開啟耳返監聽 (MIC MONITOR)</button>
+      <button id="micToggleBtn" class="btn-liquid-metal">啟動神經監聽耳返 (MIC MONITOR)</button>
       
-      <!-- 動態音量跳動條 -->
-      <div class="vu-pill-track">
-        <div class="vu-pill-active" id="vuMeter"></div>
+      <!-- 量子音波柱 -->
+      <div class="quantum-track">
+        <div class="quantum-bar" id="vuMeter"></div>
       </div>
 
-      <div class="fader-card">
-        <span class="fader-label">🎙️ 耳返增益</span>
-        <input type="range" id="micVolume" min="0" max="5" step="0.1" value="1.5">
-        <span class="fader-value" id="micVal">150%</span>
+      <!-- 耳返增益放大 -->
+      <div class="slider-capsule">
+        <span class="slider-title">🎙️ 耳返增益</span>
+        <input type="range" id="micVolume" min="0" max="5" step="0.1" value="1.8">
+        <span class="slider-digits" id="micVal">180%</span>
       </div>
 
-      <div class="fader-card">
-        <span class="fader-label">🎵 伴奏音量</span>
-        <input type="range" id="musicVolume" min="0" max="1" step="0.05" value="0.7">
-        <span class="fader-value" id="musicVal">70%</span>
+      <!-- 預設壓低至 25% 防止爆音 -->
+      <div class="slider-capsule">
+        <span class="slider-title">🎵 伴奏音量</span>
+        <input type="range" id="musicVolume" min="0" max="1" step="0.05" value="0.25">
+        <span class="slider-digits" id="musicVal">25%</span>
       </div>
     </div>
 
     <!-- 2. 包廂配對連線 -->
-    <div class="k-panel">
-      <div class="panel-header">
-        <span class="panel-title">👥 好友連線包廂</span>
-        <span class="panel-tag">P2P ROOM</span>
+    <div class="holo-deck">
+      <div class="deck-head">
+        <span class="deck-title">👥 多維次元包廂</span>
+        <span class="deck-status">P2P TUNNEL</span>
       </div>
       
-      <button class="btn-pill-sub" id="createRoomBtn" style="width: 100%; margin-bottom: 8px;">建立舞廳包廂 (HOST)</button>
+      <button class="btn-holo-sub" id="createRoomBtn" style="width: 100%; margin-bottom: 8px;">開立虛擬包廂 (HOST)</button>
       
-      <div class="input-pill-group">
+      <div class="input-flow-row">
         <input type="text" id="joinRoomInput" placeholder="輸入好友包廂代碼...">
-        <button class="btn-pill-sub" id="joinRoomBtn">連線 (JOIN)</button>
+        <button class="btn-holo-sub" id="joinRoomBtn">連線 (JOIN)</button>
       </div>
 
-      <div class="room-indicator" id="roomStatus">舞廳離線中</div>
+      <div class="network-badge" id="roomStatus">系統離線中</div>
     </div>
 
-    <!-- 3. YouTube 點歌甲板 -->
-    <div class="k-panel">
-      <div class="panel-header">
-        <span class="panel-title">🎵 伴奏點播甲板</span>
-        <span class="panel-tag">YOUTUBE DECK</span>
+    <!-- 3. 伴奏點歌甲板 -->
+    <div class="holo-deck">
+      <div class="deck-head">
+        <span class="deck-title">🎵 全息影音點播機</span>
+        <span class="deck-status">HOLO DECK</span>
       </div>
 
-      <div class="input-pill-group">
+      <div class="input-flow-row">
         <input type="text" id="ytUrlInput" placeholder="貼上 YouTube 伴奏/KTV 網址...">
-        <button class="btn-pill-sub" id="addQueueBtn">點歌</button>
+        <button class="btn-holo-sub" id="addQueueBtn">點歌</button>
       </div>
 
-      <!-- 手機端防阻擋提示 -->
-      <div class="k-unmute-banner" id="unmuteTip">
-        ✨ 伴奏已就緒！點此一鍵載入畫面與聲音 🔊
+      <!-- 手機端解除限制提示 -->
+      <div class="holo-unmute-cue" id="unmuteTip">
+        ✨ 伴奏已就緒！點此解鎖全息螢幕與聲音 🔊
       </div>
 
-      <div class="video-viewport">
+      <div class="holo-screen-frame">
         <div id="ytPlayer"></div>
       </div>
 
       <div style="display: flex; gap: 8px; margin-top: 10px;">
-        <button class="btn-pill-sub" id="syncFixBtn" style="flex: 1; border-color: rgba(0, 245, 212, 0.4); color: var(--k-cyan);">🔄 秒數重新對齊</button>
-        <button class="btn-pill-sub" id="nextSongBtn" style="flex: 1; border-color: rgba(255, 42, 133, 0.4); color: var(--k-pink);">⏭️ 切歌 / 下一首</button>
+        <button class="btn-holo-sub" id="syncFixBtn" style="flex: 1; border-color: rgba(0, 240, 255, 0.4); color: var(--y3k-cyan);">🔄 秒數精準對齊</button>
+        <button class="btn-holo-sub" id="nextSongBtn" style="flex: 1; border-color: rgba(255, 0, 127, 0.4); color: var(--y3k-pink);">⏭️ 切歌 / 下一首</button>
       </div>
 
-      <div class="panel-header" style="margin-top: 14px; margin-bottom: 6px;">
-        <span style="font-size: 0.78rem; font-weight: 700; color: #888;">PLAYLIST // 待播歌單</span>
+      <div class="deck-head" style="margin-top: 14px; margin-bottom: 4px;">
+        <span style="font-size: 0.74rem; font-weight: 700; color: #8fa0b5;">DATASTREAM // 預約序列</span>
       </div>
-      <div class="track-flow" id="playlistBox">
-        <div class="empty-flow">歌單空空如也，快貼上伴奏開始點歌吧！</div>
+      <div class="holo-stream-list" id="playlistBox">
+        <div class="empty-stream">序列待命中，請貼上 YouTube 伴奏連結</div>
       </div>
     </div>
   </div>
@@ -453,7 +462,7 @@
 
   <script>
     /* ====================================================
-       1. 音訊核心與動態跳動條
+       1. 音訊核心、耳返監聽與量子聲波柱
        ==================================================== */
     let audioCtx = null;
     let micStream = null;
@@ -516,7 +525,7 @@
           analyserNode.connect(audioCtx.destination);
 
           isMonitoring = true;
-          micBtn.textContent = '🔊 耳返監聽進行中 (LIVE)';
+          micBtn.textContent = '🔊 神經連結監聽中 (LINKED)';
           micBtn.classList.add('active');
           updateVUMeter();
         } catch (err) {
@@ -530,7 +539,7 @@
         isMonitoring = false;
         cancelAnimationFrame(animFrameId);
         vuMeter.style.width = '0%';
-        micBtn.textContent = '開啟耳返監聽 (MIC MONITOR)';
+        micBtn.textContent = '啟動神經監聽耳返 (MIC MONITOR)';
         micBtn.classList.remove('active');
       }
     });
@@ -550,7 +559,7 @@
     });
 
     /* ====================================================
-       2. YouTube 播放器與待播清單
+       2. YouTube 播放器與全息預約序列
        ==================================================== */
     let playlist = [];
     let currentSongIndex = -1;
@@ -567,16 +576,16 @@
 
     function renderPlaylist() {
       if (playlist.length === 0) {
-        playlistBox.innerHTML = '<div class="empty-flow">歌單空空如也，快貼上伴奏開始點歌吧！</div>';
+        playlistBox.innerHTML = '<div class="empty-stream">序列待命中，請貼上 YouTube 伴奏連結</div>';
         return;
       }
       let html = '';
       playlist.forEach((item, index) => {
         let tag = `#${index + 1}`;
-        let itemClass = 'track-row';
+        let itemClass = 'stream-node';
         if (index === currentSongIndex) {
-          tag = 'ON AIR';
-          itemClass += ' now-on-air';
+          tag = 'STREAMING';
+          itemClass += ' streaming-active';
         } else if (index === currentSongIndex + 1) {
           tag = 'NEXT';
         }
@@ -603,7 +612,7 @@
         events: {
           onReady: (event) => {
             isPlayerReady = true;
-            event.target.setVolume(parseFloat(musicVolSlider.value) * 100);
+            event.target.setVolume(25); // 預設安全音量 25%
           },
           onStateChange: (event) => {
             if (isInternalAction) return;
@@ -660,7 +669,7 @@
         playTrackAtIndex(currentSongIndex + 1, 0);
         broadcastFullState();
       } else {
-        alert('舞廳曲目已全數播畢！');
+        alert('次元序列曲目已全數播畢！');
       }
     }
 
@@ -670,7 +679,7 @@
       if (ytPlayer && typeof ytPlayer.getCurrentTime === 'function') {
         const currTime = ytPlayer.getCurrentTime();
         broadcastControl('SEEK', currTime);
-        alert('已向全包廂對齊秒數進度：' + Math.round(currTime) + ' 秒');
+        alert('已向全包廂重新校準秒數：' + Math.round(currTime) + ' 秒');
       }
     });
 
@@ -682,7 +691,7 @@
         return;
       }
 
-      const songItem = { id: videoId, title: '伴奏曲目 (' + videoId.substring(0, 6) + ')' };
+      const songItem = { id: videoId, title: '伴奏序列 (' + videoId.substring(0, 6) + ')' };
       playlist.push(songItem);
       ytUrlInput.value = '';
 
@@ -696,7 +705,7 @@
     });
 
     /* ====================================================
-       3. PeerJS 雙向多端連線
+       3. 雙向包廂連線網路層
        ==================================================== */
     let peer = null;
     let activeConnections = [];
@@ -760,7 +769,7 @@
         activeConnections.push(conn);
       }
       conn.on('open', () => {
-        roomStatus.innerHTML = '<span style="color:var(--k-cyan);font-weight:700;">✨ 包廂連線成功 (CONNECTED)</span>';
+        roomStatus.innerHTML = '<span style="color:var(--y3k-cyan);font-weight:700;">✨ 次元通道連結成功 (CONNECTED)</span>';
         broadcastFullState();
       });
       conn.on('data', handleIncomingData);
@@ -793,7 +802,7 @@
     createRoomBtn.addEventListener('click', () => {
       setupPeer();
       peer.on('open', (id) => {
-        roomStatus.innerHTML = `包廂專屬碼：<br><strong style="color:var(--k-pink);font-family:'Syne';font-size:1.15rem;letter-spacing:1px;">${id}</strong>`;
+        roomStatus.innerHTML = `次元包廂代碼：<br><strong style="color:var(--y3k-pink);font-family:'Space Grotesk';font-size:1.15rem;letter-spacing:1px;">${id}</strong>`;
       });
     });
 
@@ -819,7 +828,7 @@
         remoteAudio.srcObject = remoteStream;
       });
 
-      roomStatus.innerHTML = `<span style="color:var(--k-cyan);font-weight:700;">✨ 已加入包廂：${targetId}</span>`;
+      roomStatus.innerHTML = `<span style="color:var(--y3k-cyan);font-weight:700;">✨ 已切換至目標次元：${targetId}</span>`;
     });
   </script>
 </body>
