@@ -6,254 +6,288 @@
   <title>YUNUBE KTV</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Syne:wght@700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --neon-pink: #ff007f;
-      --neon-cyan: #00f3ff;
-      --neon-purple: #9d00ff;
-      --neon-yellow: #f8e71c;
-      --dark-bg: #09090e;
-      --panel-bg: rgba(18, 18, 28, 0.85);
-      --border-glow: rgba(0, 243, 255, 0.3);
+      --k-pink: #ff2a85;
+      --k-cyan: #00f5d4;
+      --k-purple: #7b2cbf;
+      --k-neon: #fee440;
+      --bg-dark: #0a0b10;
+      --card-bg: rgba(18, 19, 29, 0.72);
+      --glass-panel: rgba(25, 27, 42, 0.65);
+      --border-line: rgba(255, 255, 255, 0.12);
+      --border-focus: rgba(0, 245, 212, 0.6);
     }
 
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
-      font-family: 'Rajdhani', 'Noto Sans TC', -apple-system, sans-serif;
-      background-color: var(--dark-bg);
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', -apple-system, sans-serif;
+      background-color: var(--bg-dark);
       background-image: 
-        linear-gradient(rgba(0, 243, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 0, 127, 0.04) 1px, transparent 1px);
-      background-size: 30px 30px;
-      color: #fff;
+        radial-gradient(circle at 15% 15%, rgba(255, 42, 133, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(0, 245, 212, 0.15) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      color: #f1f2f6;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       margin: 0;
-      padding: 16px;
+      padding: 20px 14px;
     }
 
-    .cyber-frame {
+    .k-frame {
       width: 100%;
-      max-width: 520px;
-      background: var(--panel-bg);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--border-glow);
-      border-radius: 12px;
-      padding: 22px;
-      box-shadow: 0 0 35px rgba(0, 243, 255, 0.15), inset 0 0 20px rgba(255, 0, 127, 0.05);
+      max-width: 480px;
+      background: var(--card-bg);
+      backdrop-filter: blur(28px) saturate(160%);
+      -webkit-backdrop-filter: blur(28px) saturate(160%);
+      border: 1px solid var(--border-line);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 
+        0 24px 60px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(255, 42, 133, 0.12),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25);
+    }
+
+    /* 頂部韓系招牌標題 */
+    .brand-section {
+      text-align: center;
+      margin-bottom: 20px;
       position: relative;
     }
 
-    /* 頂部賽博霓虹招牌 */
     .brand-title {
-      font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 900;
-      text-align: center;
-      letter-spacing: 4px;
-      color: #fff;
+      font-family: 'Syne', 'Noto Sans TC', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #ffffff 20%, #ffd0e4 50%, var(--k-pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0 0 2px 0;
       text-transform: uppercase;
-      margin: 0 0 4px 0;
-      text-shadow: 
-        0 0 7px #fff,
-        0 0 14px var(--neon-pink),
-        0 0 25px var(--neon-pink),
-        0 0 40px var(--neon-purple);
+      filter: drop-shadow(0 2px 16px rgba(255, 42, 133, 0.4));
     }
 
-    .brand-subtitle {
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--neon-cyan);
-      letter-spacing: 3px;
-      margin-bottom: 16px;
-      opacity: 0.9;
-      text-transform: uppercase;
-      font-family: 'Orbitron', sans-serif;
+    .brand-badge {
+      display: inline-block;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
       font-weight: 700;
-      text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
+      letter-spacing: 2.5px;
+      color: var(--k-cyan);
+      background: rgba(0, 245, 212, 0.08);
+      border: 1px solid rgba(0, 245, 212, 0.25);
+      padding: 3px 12px;
+      border-radius: 100px;
+      text-transform: uppercase;
     }
 
-    .warning-box {
-      background: rgba(248, 231, 28, 0.08);
-      border: 1px dashed var(--neon-yellow);
-      color: var(--neon-yellow);
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      margin-bottom: 14px;
-      line-height: 1.4;
-      text-shadow: 0 0 8px rgba(248, 231, 28, 0.4);
+    .earphone-alert {
+      background: rgba(254, 228, 64, 0.06);
+      border: 1px solid rgba(254, 228, 64, 0.25);
+      color: #ffeaa7;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
     }
 
-    .cyber-panel {
-      background: rgba(10, 10, 18, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-left: 3px solid var(--neon-cyan);
-      border-radius: 8px;
-      padding: 14px;
-      margin-bottom: 14px;
-      position: relative;
+    /* 韓系模組面板 */
+    .k-panel {
+      background: var(--glass-panel);
+      border: 1px solid var(--border-line);
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .k-panel:hover {
+      border-color: rgba(255, 255, 255, 0.22);
     }
 
     .panel-header {
-      font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--neon-cyan);
-      margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 12px;
     }
 
-    button {
-      font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
-      letter-spacing: 1px;
+    .panel-title {
+      font-family: 'Syne', 'Noto Sans TC', sans-serif;
       font-size: 0.85rem;
-      padding: 12px;
-      border-radius: 6px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .panel-tag {
+      font-size: 0.68rem;
+      font-family: 'Syne', sans-serif;
+      color: var(--k-cyan);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* 韓流時尚按鈕 */
+    button {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 12px 18px;
+      border-radius: 14px;
       border: none;
       cursor: pointer;
-      text-transform: uppercase;
-      font-weight: bold;
-      transition: all 0.2s ease;
+      letter-spacing: 0.5px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       width: 100%;
     }
 
-    .btn-neon-pink {
-      background: linear-gradient(135deg, #ff007f, #b30059);
+    .btn-main-pink {
+      background: linear-gradient(135deg, #ff2a85 0%, #d80064 100%);
       color: #fff;
-      box-shadow: 0 0 14px rgba(255, 0, 127, 0.4);
+      box-shadow: 0 8px 24px rgba(255, 42, 133, 0.35);
     }
 
-    .btn-neon-pink:active {
-      transform: scale(0.98);
-      box-shadow: 0 0 22px rgba(255, 0, 127, 0.8);
+    .btn-main-pink:active {
+      transform: scale(0.97);
+      box-shadow: 0 4px 14px rgba(255, 42, 133, 0.5);
     }
 
-    .btn-neon-pink.active {
-      background: linear-gradient(135deg, #00f3ff, #0099ff);
-      color: #000;
-      box-shadow: 0 0 16px rgba(0, 243, 255, 0.7);
+    .btn-main-pink.active {
+      background: linear-gradient(135deg, #00f5d4 0%, #00bbf9 100%);
+      color: #051419;
+      box-shadow: 0 8px 24px rgba(0, 245, 212, 0.4);
     }
 
-    .btn-sub {
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+    .btn-pill-sub {
+      background: rgba(255, 255, 255, 0.06);
+      color: #eee;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 9px 16px;
       width: auto;
-      padding: 8px 12px;
       font-size: 0.8rem;
+      font-weight: 600;
     }
 
-    .btn-sub:hover, .btn-sub:active {
-      border-color: var(--neon-cyan);
-      box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
-    }
-
-    .btn-next {
-      background: linear-gradient(135deg, #f39c12, #e74c3c);
+    .btn-pill-sub:hover, .btn-pill-sub:active {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--k-cyan);
       color: #fff;
-      margin-top: 8px;
-      box-shadow: 0 0 12px rgba(243, 156, 18, 0.3);
     }
 
-    /* 音量動態跳動條 (VU Meter) */
-    .vu-meter-bar {
+    /* 膠囊音量跳動條 (Soundwave Pill) */
+    .vu-pill-track {
       height: 6px;
-      background: #111;
-      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
       overflow: hidden;
-      margin-top: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 10px 0 14px 0;
     }
-    .vu-meter-fill {
+
+    .vu-pill-active {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #00f3ff, #f8e71c 70%, #ff007f 90%);
-      transition: width 0.05s ease-out;
-      box-shadow: 0 0 8px #00f3ff;
+      background: linear-gradient(90deg, var(--k-cyan), var(--k-pink));
+      border-radius: 100px;
+      transition: width 0.06s ease;
+      box-shadow: 0 0 10px var(--k-cyan);
     }
 
-    .fader-row {
+    /* 極簡調音推桿卡片 */
+    .fader-card {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-top: 10px;
-      font-size: 0.85rem;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 8px 10px;
-      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.25);
       border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-top: 8px;
     }
+
     .fader-label {
+      font-size: 0.8rem;
+      font-weight: 600;
       color: #aaa;
-      min-width: 80px;
-      font-size: 0.8rem;
+      min-width: 82px;
     }
-    .fader-val {
-      min-width: 45px;
+
+    .fader-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--k-cyan);
+      min-width: 44px;
       text-align: right;
-      font-family: 'Orbitron', monospace;
-      color: var(--neon-cyan);
-      font-size: 0.8rem;
     }
+
     input[type="range"] {
       flex: 1;
-      margin: 0 10px;
-      accent-color: var(--neon-pink);
+      margin: 0 12px;
+      accent-color: var(--k-pink);
+      height: 4px;
     }
 
-    .input-line {
+    /* 膠囊輸入欄 */
+    .input-pill-group {
       display: flex;
-      gap: 6px;
-      margin-bottom: 8px;
+      gap: 8px;
+      margin-bottom: 10px;
     }
+
     input[type="text"] {
       flex: 1;
-      padding: 8px 12px;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.3);
       color: #fff;
-      font-family: 'Rajdhani', 'Noto Sans TC', sans-serif;
-      font-size: 0.9rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
       outline: none;
-    }
-    input[type="text"]:focus {
-      border-color: var(--neon-cyan);
-      box-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
+      transition: border 0.2s;
     }
 
-    .room-badge {
-      font-size: 0.85rem;
-      color: var(--neon-cyan);
+    input[type="text"]:focus {
+      border-color: var(--border-focus);
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .room-indicator {
+      font-size: 0.8rem;
+      color: #bbb;
       margin-top: 6px;
       word-break: break-all;
     }
 
-    .video-deck {
+    /* 播放視窗甲板 */
+    .video-viewport {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      border-radius: 8px;
+      border-radius: 16px;
       background: #000;
-      border: 1px solid var(--neon-pink);
-      box-shadow: 0 0 15px rgba(255, 0, 127, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       margin-top: 10px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
     }
-    .video-deck iframe {
+
+    .video-viewport iframe {
       position: absolute;
       top: 0;
       left: 0;
@@ -262,137 +296,151 @@
       border: none;
     }
 
-    .unmute-alert {
-      background: linear-gradient(90deg, #9d00ff, #ff007f);
+    .k-unmute-banner {
+      background: linear-gradient(135deg, rgba(123, 44, 191, 0.9), rgba(255, 42, 133, 0.9));
       color: #fff;
-      padding: 10px;
-      border-radius: 6px;
-      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 12px;
+      border-radius: 14px;
+      font-size: 0.82rem;
       text-align: center;
-      margin-top: 8px;
+      margin-top: 10px;
       cursor: pointer;
       display: none;
-      animation: pulseGlow 1.2s infinite alternate;
-    }
-    @keyframes pulseGlow {
-      from { box-shadow: 0 0 8px #9d00ff; }
-      to { box-shadow: 0 0 20px #ff007f; }
+      box-shadow: 0 8px 24px rgba(255, 42, 133, 0.35);
+      animation: kPulse 1.4s infinite alternate;
     }
 
-    .track-list {
-      margin-top: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 6px;
-      padding: 8px;
-      max-height: 170px;
-      overflow-y: auto;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+    @keyframes kPulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.02); }
     }
-    .track-item {
+
+    /* 時尚歌單面板 */
+    .track-flow {
+      margin-top: 12px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 14px;
+      padding: 6px 10px;
+      max-height: 140px;
+      overflow-y: auto;
+    }
+
+    .track-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.85rem;
-      padding: 6px 8px;
+      font-size: 0.8rem;
+      padding: 8px 6px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .track-item.playing {
-      color: var(--neon-cyan);
-      text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
-      border-left: 2px solid var(--neon-cyan);
-      padding-left: 8px;
+
+    .track-row:last-child { border-bottom: none; }
+
+    .track-row.now-on-air {
+      color: var(--k-cyan);
+      font-weight: 700;
     }
-    .empty-queue {
+
+    .empty-flow {
       color: #666;
       text-align: center;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       padding: 12px;
     }
+
     #remoteAudio { display: none; }
   </style>
 </head>
 <body>
 
-  <div class="cyber-frame">
-    <!-- 主招牌中文與英文名稱 -->
-    <div class="brand-title">YUNUBE大舞廳</div>
-    <div class="brand-subtitle">// YUNUBE KTV //</div>
-
-    <div class="warning-box">
-      ⚠️ <strong>必須佩戴有線耳機！</strong> 外放喇叭會將聲波反覆震盪收錄，引發高頻尖叫嘯叫。
+  <div class="k-frame">
+    <!-- 頂部招牌 -->
+    <div class="brand-section">
+      <div class="brand-title">YUNUBE大舞廳</div>
+      <div class="brand-badge">YUNUBE KTV // LIVE</div>
     </div>
 
-    <!-- 1. 歌手監聽調音台 -->
-    <div class="cyber-panel">
+    <div class="earphone-alert">
+      🎧 <strong>請務必戴上有線耳機體驗！</strong><br>
+      若在 iOS 上覺得伴奏太大聲，請直接「拉高耳返增益」並使用手機實體鍵微調整體音量。
+    </div>
+
+    <!-- 1. 韓系歌手監聽與混音台 -->
+    <div class="k-panel">
       <div class="panel-header">
-        <span>[01] MONITOR & MIXER</span>
-        <span style="font-size: 0.7rem; color: #777;">LOW-LATENCY</span>
+        <span class="panel-title">🎚️ 歌手耳返與調音台</span>
+        <span class="panel-tag">STUDIO PRO</span>
       </div>
 
-      <button id="micToggleBtn" class="btn-neon-pink">啟動監聽耳返 (MIC MONITOR)</button>
+      <button id="micToggleBtn" class="btn-main-pink">開啟耳返監聽 (MIC MONITOR)</button>
       
-      <!-- 動態音量跳動條 (歌聲響度計) -->
-      <div class="vu-meter-bar">
-        <div class="vu-meter-fill" id="vuMeter"></div>
+      <!-- 動態音量跳動條 -->
+      <div class="vu-pill-track">
+        <div class="vu-pill-active" id="vuMeter"></div>
       </div>
 
-      <div class="fader-row">
-        <span class="fader-label">🎙️ 耳返音量</span>
-        <input type="range" id="micVolume" min="0" max="2" step="0.05" value="1">
-        <span class="fader-val" id="micVal">100%</span>
+      <div class="fader-card">
+        <span class="fader-label">🎙️ 耳返增益</span>
+        <input type="range" id="micVolume" min="0" max="5" step="0.1" value="1.5">
+        <span class="fader-value" id="micVal">150%</span>
       </div>
 
-      <div class="fader-row">
+      <div class="fader-card">
         <span class="fader-label">🎵 伴奏音量</span>
-        <input type="range" id="musicVolume" min="0" max="1" step="0.05" value="0.8">
-        <span class="fader-val" id="musicVal">80%</span>
+        <input type="range" id="musicVolume" min="0" max="1" step="0.05" value="0.7">
+        <span class="fader-value" id="musicVal">70%</span>
       </div>
     </div>
 
     <!-- 2. 包廂配對連線 -->
-    <div class="cyber-panel" style="border-left-color: var(--neon-purple);">
+    <div class="k-panel">
       <div class="panel-header">
-        <span style="color: var(--neon-purple);">[02] NET-LINK ROOM</span>
-        <span style="font-size: 0.7rem; color: #777;">PEER P2P</span>
+        <span class="panel-title">👥 好友連線包廂</span>
+        <span class="panel-tag">P2P ROOM</span>
       </div>
       
-      <button class="btn-sub" id="createRoomBtn" style="width: 100%; margin-bottom: 8px;">建立舞廳包廂 (HOST)</button>
+      <button class="btn-pill-sub" id="createRoomBtn" style="width: 100%; margin-bottom: 8px;">建立舞廳包廂 (HOST)</button>
       
-      <div class="input-line">
+      <div class="input-pill-group">
         <input type="text" id="joinRoomInput" placeholder="輸入好友包廂代碼...">
-        <button class="btn-sub" id="joinRoomBtn">連線 (JOIN)</button>
+        <button class="btn-pill-sub" id="joinRoomBtn">連線 (JOIN)</button>
       </div>
 
-      <div class="room-badge" id="roomStatus">舞廳離線中</div>
+      <div class="room-indicator" id="roomStatus">舞廳離線中</div>
     </div>
 
-    <!-- 3. 伴奏點歌甲板 -->
-    <div class="cyber-panel" style="border-left-color: var(--neon-pink);">
+    <!-- 3. YouTube 點歌甲板 -->
+    <div class="k-panel">
       <div class="panel-header">
-        <span style="color: var(--neon-pink);">[03] MEDIA DECK</span>
-        <span style="font-size: 0.7rem; color: #777;">YOUTUBE SYNC</span>
+        <span class="panel-title">🎵 伴奏點播甲板</span>
+        <span class="panel-tag">YOUTUBE DECK</span>
       </div>
 
-      <div class="input-line">
+      <div class="input-pill-group">
         <input type="text" id="ytUrlInput" placeholder="貼上 YouTube 伴奏/KTV 網址...">
-        <button class="btn-sub" id="addQueueBtn">點歌</button>
+        <button class="btn-pill-sub" id="addQueueBtn">點歌</button>
       </div>
 
-      <div class="unmute-alert" id="unmuteTip">
-        ⚡ 伴奏已就緒！點此解鎖同步影音播放 🔊
+      <!-- 手機端防阻擋提示 -->
+      <div class="k-unmute-banner" id="unmuteTip">
+        ✨ 伴奏已就緒！點此一鍵載入畫面與聲音 🔊
       </div>
 
-      <div class="video-deck">
+      <div class="video-viewport">
         <div id="ytPlayer"></div>
       </div>
 
-      <button class="btn-next" id="nextSongBtn">⏭️ 切歌 / 下一首 (SKIP TRACK)</button>
-
-      <div class="panel-header" style="margin-top: 14px; font-size: 0.75rem;">
-        <span>QUEUE // 舞廳歌單</span>
+      <div style="display: flex; gap: 8px; margin-top: 10px;">
+        <button class="btn-pill-sub" id="syncFixBtn" style="flex: 1; border-color: rgba(0, 245, 212, 0.4); color: var(--k-cyan);">🔄 秒數重新對齊</button>
+        <button class="btn-pill-sub" id="nextSongBtn" style="flex: 1; border-color: rgba(255, 42, 133, 0.4); color: var(--k-pink);">⏭️ 切歌 / 下一首</button>
       </div>
-      <div class="track-list" id="playlistBox">
-        <div class="empty-queue">歌單待命中，請貼上 YouTube 伴奏網址加入佇列</div>
+
+      <div class="panel-header" style="margin-top: 14px; margin-bottom: 6px;">
+        <span style="font-size: 0.78rem; font-weight: 700; color: #888;">PLAYLIST // 待播歌單</span>
+      </div>
+      <div class="track-flow" id="playlistBox">
+        <div class="empty-flow">歌單空空如也，快貼上伴奏開始點歌吧！</div>
       </div>
     </div>
   </div>
@@ -405,7 +453,7 @@
 
   <script>
     /* ====================================================
-       1. 音訊核心、耳返監聽與即時 VU Meter 跳動條
+       1. 音訊核心與動態跳動條
        ==================================================== */
     let audioCtx = null;
     let micStream = null;
@@ -440,13 +488,9 @@
       analyserNode.getByteFrequencyData(dataArray);
 
       let sum = 0;
-      for (let i = 0; i < dataArray.length; i++) {
-        sum += dataArray[i];
-      }
-      let avg = sum / dataArray.length;
-      let percent = Math.min(100, Math.round((avg / 128) * 100 * 1.5));
+      for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
+      let percent = Math.min(100, Math.round((sum / dataArray.length / 128) * 100 * 1.5));
       vuMeter.style.width = percent + '%';
-
       animFrameId = requestAnimationFrame(updateVUMeter);
     }
 
@@ -472,7 +516,7 @@
           analyserNode.connect(audioCtx.destination);
 
           isMonitoring = true;
-          micBtn.textContent = '🔊 舞廳監聽中 (MONITOR ACTIVE)';
+          micBtn.textContent = '🔊 耳返監聽進行中 (LIVE)';
           micBtn.classList.add('active');
           updateVUMeter();
         } catch (err) {
@@ -486,7 +530,7 @@
         isMonitoring = false;
         cancelAnimationFrame(animFrameId);
         vuMeter.style.width = '0%';
-        micBtn.textContent = '啟動監聽耳返 (MIC MONITOR)';
+        micBtn.textContent = '開啟耳返監聽 (MIC MONITOR)';
         micBtn.classList.remove('active');
       }
     });
@@ -506,37 +550,37 @@
     });
 
     /* ====================================================
-       2. 待播清單與 YouTube 播放器控制
+       2. YouTube 播放器與待播清單
        ==================================================== */
     let playlist = [];
     let currentSongIndex = -1;
     let ytPlayer = null;
     let isPlayerReady = false;
+    let isInternalAction = false;
 
     const playlistBox = document.getElementById('playlistBox');
     const unmuteTip = document.getElementById('unmuteTip');
     const ytUrlInput = document.getElementById('ytUrlInput');
     const addQueueBtn = document.getElementById('addQueueBtn');
     const nextSongBtn = document.getElementById('nextSongBtn');
+    const syncFixBtn = document.getElementById('syncFixBtn');
 
     function renderPlaylist() {
       if (playlist.length === 0) {
-        playlistBox.innerHTML = '<div class="empty-queue">歌單待命中，請貼上 YouTube 伴奏網址加入佇列</div>';
+        playlistBox.innerHTML = '<div class="empty-flow">歌單空空如也，快貼上伴奏開始點歌吧！</div>';
         return;
       }
       let html = '';
       playlist.forEach((item, index) => {
         let tag = `#${index + 1}`;
-        let itemClass = 'track-item';
+        let itemClass = 'track-row';
         if (index === currentSongIndex) {
-          tag = '▶ 舞廳正熱播';
-          itemClass += ' playing';
+          tag = 'ON AIR';
+          itemClass += ' now-on-air';
         } else if (index === currentSongIndex + 1) {
           tag = 'NEXT';
         }
-        html += `<div class="${itemClass}">
-          <span>[${tag}] ${item.title}</span>
-        </div>`;
+        html += `<div class="${itemClass}"><span>[${tag}] ${item.title}</span></div>`;
       });
       playlistBox.innerHTML = html;
     }
@@ -562,56 +606,73 @@
             event.target.setVolume(parseFloat(musicVolSlider.value) * 100);
           },
           onStateChange: (event) => {
+            if (isInternalAction) return;
             if (event.data === YT.PlayerState.ENDED) {
               playNextSong();
+            } else if (event.data === YT.PlayerState.PLAYING) {
+              broadcastControl('PLAY', ytPlayer.getCurrentTime());
+            } else if (event.data === YT.PlayerState.PAUSED) {
+              broadcastControl('PAUSE', ytPlayer.getCurrentTime());
             }
           }
         }
       });
     };
 
-    function playVideo(videoId) {
+    function playVideo(videoId, startSeconds = 0) {
       if (!isPlayerReady || !ytPlayer) {
-        setTimeout(() => playVideo(videoId), 500);
+        setTimeout(() => playVideo(videoId, startSeconds), 400);
         return;
       }
       unmuteTip.style.display = 'block';
 
       try {
-        ytPlayer.loadVideoById(videoId);
+        isInternalAction = true;
+        ytPlayer.loadVideoById({ videoId: videoId, startSeconds: startSeconds });
         ytPlayer.setVolume(parseFloat(musicVolSlider.value) * 100);
         ytPlayer.playVideo();
+        setTimeout(() => { isInternalAction = false; }, 800);
       } catch (e) {
-        console.warn('播放被攔截，點擊提示解除限制', e);
+        console.warn('等待手機觸碰解鎖', e);
       }
     }
 
     unmuteTip.addEventListener('click', () => {
-      if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+      if (ytPlayer && playlist[currentSongIndex]) {
+        isInternalAction = true;
+        ytPlayer.loadVideoById(playlist[currentSongIndex].id);
         ytPlayer.playVideo();
-        ytPlayer.setVolume(parseFloat(musicVolSlider.value) * 100);
+        setTimeout(() => { isInternalAction = false; }, 800);
       }
       unmuteTip.style.display = 'none';
     });
 
-    function playTrackAtIndex(index) {
+    function playTrackAtIndex(index, startSeconds = 0) {
       if (index >= 0 && index < playlist.length) {
         currentSongIndex = index;
         renderPlaylist();
-        playVideo(playlist[currentSongIndex].id);
+        playVideo(playlist[currentSongIndex].id, startSeconds);
       }
     }
 
     function playNextSong() {
       if (currentSongIndex + 1 < playlist.length) {
-        playTrackAtIndex(currentSongIndex + 1);
-        broadcastState();
+        playTrackAtIndex(currentSongIndex + 1, 0);
+        broadcastFullState();
       } else {
         alert('舞廳曲目已全數播畢！');
       }
     }
 
     nextSongBtn.addEventListener('click', playNextSong);
+
+    syncFixBtn.addEventListener('click', () => {
+      if (ytPlayer && typeof ytPlayer.getCurrentTime === 'function') {
+        const currTime = ytPlayer.getCurrentTime();
+        broadcastControl('SEEK', currTime);
+        alert('已向全包廂對齊秒數進度：' + Math.round(currTime) + ' 秒');
+      }
+    });
 
     addQueueBtn.addEventListener('click', () => {
       const url = ytUrlInput.value.trim();
@@ -627,37 +688,46 @@
 
       if (currentSongIndex === -1) {
         currentSongIndex = 0;
-        playTrackAtIndex(0);
+        playTrackAtIndex(0, 0);
       } else {
         renderPlaylist();
       }
-      broadcastState();
+      broadcastFullState();
     });
 
     /* ====================================================
-       3. PeerJS 連線與多端即時廣播
+       3. PeerJS 雙向多端連線
        ==================================================== */
     let peer = null;
-    let connections = [];
+    let activeConnections = [];
     const roomStatus = document.getElementById('roomStatus');
     const createRoomBtn = document.getElementById('createRoomBtn');
     const joinRoomBtn = document.getElementById('joinRoomBtn');
     const joinRoomInput = document.getElementById('joinRoomInput');
     const remoteAudio = document.getElementById('remoteAudio');
 
-    function broadcastState() {
+    function broadcastFullState() {
+      const currentTime = (ytPlayer && typeof ytPlayer.getCurrentTime === 'function') ? ytPlayer.getCurrentTime() : 0;
       const payload = {
-        type: 'SYNC_STATE',
+        type: 'FULL_STATE',
         playlist: playlist,
-        currentSongIndex: currentSongIndex
+        currentSongIndex: currentSongIndex,
+        currentTime: currentTime
       };
-      connections.forEach(conn => {
+      activeConnections.forEach(conn => {
+        if (conn && conn.open) conn.send(payload);
+      });
+    }
+
+    function broadcastControl(action, time) {
+      const payload = { type: 'MEDIA_CONTROL', action: action, time: time };
+      activeConnections.forEach(conn => {
         if (conn && conn.open) conn.send(payload);
       });
     }
 
     function handleIncomingData(data) {
-      if (data.type === 'SYNC_STATE') {
+      if (data.type === 'FULL_STATE') {
         playlist = data.playlist || [];
         const prevIndex = currentSongIndex;
         currentSongIndex = data.currentSongIndex;
@@ -665,25 +735,37 @@
 
         if (currentSongIndex !== -1 && currentSongIndex !== prevIndex) {
           if (playlist[currentSongIndex]) {
-            playVideo(playlist[currentSongIndex].id);
+            playVideo(playlist[currentSongIndex].id, data.currentTime || 0);
           }
         }
+      } else if (data.type === 'MEDIA_CONTROL') {
+        if (!ytPlayer) return;
+        isInternalAction = true;
+        if (data.action === 'PLAY') {
+          if (Math.abs(ytPlayer.getCurrentTime() - data.time) > 2) {
+            ytPlayer.seekTo(data.time, true);
+          }
+          ytPlayer.playVideo();
+        } else if (data.action === 'PAUSE') {
+          ytPlayer.pauseVideo();
+        } else if (data.action === 'SEEK') {
+          ytPlayer.seekTo(data.time, true);
+        }
+        setTimeout(() => { isInternalAction = false; }, 600);
       }
     }
 
-    function setupDataConnection(conn) {
-      connections.push(conn);
+    function registerConn(conn) {
+      if (!activeConnections.includes(conn)) {
+        activeConnections.push(conn);
+      }
       conn.on('open', () => {
-        roomStatus.innerHTML = '<span style="color:var(--neon-cyan);">⚡ 已接入舞廳連線 (CONNECTED)</span>';
-        conn.send({
-          type: 'SYNC_STATE',
-          playlist: playlist,
-          currentSongIndex: currentSongIndex
-        });
+        roomStatus.innerHTML = '<span style="color:var(--k-cyan);font-weight:700;">✨ 包廂連線成功 (CONNECTED)</span>';
+        broadcastFullState();
       });
       conn.on('data', handleIncomingData);
       conn.on('close', () => {
-        connections = connections.filter(c => c !== conn);
+        activeConnections = activeConnections.filter(c => c !== conn);
       });
     }
 
@@ -704,14 +786,14 @@
           });
         });
 
-        peer.on('connection', setupDataConnection);
+        peer.on('connection', registerConn);
       }
     }
 
     createRoomBtn.addEventListener('click', () => {
       setupPeer();
       peer.on('open', (id) => {
-        roomStatus.innerHTML = `舞廳包廂代碼：<br><strong style="color:var(--neon-pink);font-family:'Orbitron';font-size:1.1rem;letter-spacing:1px;">${id}</strong>`;
+        roomStatus.innerHTML = `包廂專屬碼：<br><strong style="color:var(--k-pink);font-family:'Syne';font-size:1.15rem;letter-spacing:1px;">${id}</strong>`;
       });
     });
 
@@ -730,14 +812,14 @@
       }
 
       const conn = peer.connect(targetId);
-      setupDataConnection(conn);
+      registerConn(conn);
 
       const call = peer.call(targetId, micStream);
       call.on('stream', (remoteStream) => {
         remoteAudio.srcObject = remoteStream;
       });
 
-      roomStatus.innerHTML = `<span style="color:var(--neon-cyan);">⚡ 已接入包廂通道：${targetId}</span>`;
+      roomStatus.innerHTML = `<span style="color:var(--k-cyan);font-weight:700;">✨ 已加入包廂：${targetId}</span>`;
     });
   </script>
 </body>
