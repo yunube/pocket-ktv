@@ -211,7 +211,11 @@
 
     async function initMicrophone() {
       if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContextClass({
+          latencyHint: 'interactive', // 強制要求最低延遲
+          sampleRate: 48000           // 固定取樣率，避免作業系統重新取樣（Resampling）產生延遲
+        });
       }
       if (audioCtx.state === 'suspended') {
         await audioCtx.resume();
