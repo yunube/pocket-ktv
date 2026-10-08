@@ -20,52 +20,55 @@
     .ktv-card {
       background: #1e1e1e;
       border-radius: 16px;
-      padding: 24px;
+      padding: 20px;
       width: 100%;
       max-width: 520px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     }
     h1 {
       margin-top: 0;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       text-align: center;
       color: #ff3366;
     }
     .warning {
       background: #4a2600;
       color: #ffb86c;
-      padding: 10px 12px;
+      padding: 10px;
       border-radius: 8px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       line-height: 1.4;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       border-left: 4px solid #ff9900;
     }
     .section {
       background: #2a2a2a;
-      padding: 16px;
+      padding: 14px;
       border-radius: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .section-title {
       font-size: 0.95rem;
       font-weight: bold;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
     button {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       border-radius: 8px;
       border: none;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: bold;
       cursor: pointer;
       background: #ff3366;
       color: white;
       transition: background 0.2s;
+    }
+    button:active {
+      opacity: 0.8;
     }
     button.active {
       background: #00cc88;
@@ -73,24 +76,29 @@
     .btn-secondary {
       background: #444;
       width: auto;
-      padding: 8px 14px;
+      padding: 8px 12px;
       font-size: 0.85rem;
     }
     .btn-secondary:hover {
       background: #555;
     }
+    .btn-next {
+      background: #e67e22;
+      width: 100%;
+      margin-top: 8px;
+    }
     .control-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 12px;
+      margin-top: 10px;
       font-size: 0.85rem;
       background: #222;
-      padding: 8px 12px;
+      padding: 8px 10px;
       border-radius: 8px;
     }
     .control-row span {
-      min-width: 90px;
+      min-width: 85px;
     }
     .val-display {
       min-width: 40px;
@@ -110,7 +118,7 @@
     }
     input[type="text"] {
       flex: 1;
-      padding: 10px;
+      padding: 8px 10px;
       border-radius: 8px;
       border: 1px solid #444;
       background: #181818;
@@ -122,7 +130,7 @@
       border-color: #ff3366;
     }
     .room-status {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #00cc88;
       margin-top: 8px;
       word-break: break-all;
@@ -134,8 +142,7 @@
       overflow: hidden;
       border-radius: 10px;
       background: #000;
-      margin-top: 12px;
-      display: none;
+      margin-top: 10px;
     }
     .video-wrapper iframe {
       position: absolute;
@@ -145,32 +152,47 @@
       height: 100%;
       border: none;
     }
-    .divider {
+    .mobile-unmute-tip {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 8px;
+      cursor: pointer;
+      display: none;
+      border: 1px solid #3498db;
+    }
+    /* 待播清單樣式 */
+    .playlist-box {
+      margin-top: 12px;
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 10px;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+    .playlist-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      padding: 6px 8px;
+      border-bottom: 1px solid #333;
+    }
+    .playlist-item:last-child {
+      border-bottom: none;
+    }
+    .playlist-item.current {
+      color: #00cc88;
+      font-weight: bold;
+    }
+    .empty-list {
+      color: #777;
       text-align: center;
       font-size: 0.8rem;
-      color: #777;
-      margin: 12px 0;
-      position: relative;
-    }
-    .divider::before, .divider::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 38%;
-      height: 1px;
-      background: #444;
-    }
-    .divider::before { left: 0; }
-    .divider::after { right: 0; }
-    input[type="file"] {
-      width: 100%;
-      font-size: 0.85rem;
-      color: #aaa;
-    }
-    audio {
-      width: 100%;
-      margin-top: 10px;
-      border-radius: 8px;
+      padding: 8px;
     }
     #remoteAudio {
       display: none;
@@ -183,25 +205,20 @@
     <h1>🎤 多人連線口袋 KTV</h1>
 
     <div class="warning">
-      ⚠️ <strong>請務必戴上有線耳機！</strong><br>
-      若使用喇叭外放，麥克風收到聲音會引發刺耳尖叫（嘯叫）。
+      ⚠️ <strong>必須戴上有線耳機！</strong> 使用喇叭會引發尖叫迴授嘯叫。
     </div>
 
-    <!-- 1. 混音控制台（獨立拉桿） -->
+    <!-- 1. 混音控制台 -->
     <div class="section">
       <div class="section-title">🎚️ 混音台：音量調整</div>
-      
-      <!-- 耳返監聽開關 -->
       <button id="micToggleBtn">開啟耳返監聽</button>
       
-      <!-- 麥克風耳返音量 -->
       <div class="control-row">
         <span>🎙️ 耳返音量</span>
         <input type="range" id="micVolume" min="0" max="2" step="0.05" value="1">
         <span class="val-display" id="micVal">100%</span>
       </div>
 
-      <!-- 歌曲伴奏音量 (iOS 支援) -->
       <div class="control-row">
         <span>🎵 歌曲伴奏</span>
         <input type="range" id="musicVolume" min="0" max="1" step="0.05" value="0.8">
@@ -209,7 +226,7 @@
       </div>
     </div>
 
-    <!-- 2. 連線包廂 (PeerJS) -->
+    <!-- 2. 線上包廂 -->
     <div class="section">
       <div class="section-title">👥 好友連線包廂</div>
       <button class="btn-secondary" id="createRoomBtn" style="width: 100%; margin-bottom: 8px;">建立新包廂（我是房長）</button>
@@ -221,25 +238,31 @@
       <div class="room-status" id="roomStatus">尚未連線</div>
     </div>
 
-    <!-- 3. 伴奏選擇 (YouTube / 本地檔案) -->
+    <!-- 3. YouTube 點播與播放器 -->
     <div class="section">
-      <div class="section-title">🎵 伴奏歌曲選擇</div>
+      <div class="section-title">🎵 伴奏歌曲與播放區</div>
       
-      <!-- YouTube 點歌 -->
       <div class="input-group">
         <input type="text" id="ytUrlInput" placeholder="貼上 YouTube 伴奏/KTV 網址">
-        <button class="btn-secondary" id="loadYtBtn">點歌</button>
+        <button class="btn-secondary" id="addQueueBtn">加入歌單</button>
+      </div>
+
+      <!-- 手機端防阻擋提示 -->
+      <div class="mobile-unmute-tip" id="unmuteTip">
+        👉 偵測到新歌曲！若畫面未自動播放，請點此解鎖同步影音 🔊
       </div>
 
       <div class="video-wrapper" id="videoWrapper">
         <div id="ytPlayer"></div>
       </div>
 
-      <div class="divider">或</div>
+      <button class="btn-next" id="nextSongBtn">⏭️ 切歌 / 下一首</button>
 
-      <!-- 本地 MP3 上傳 -->
-      <input type="file" id="fileInput" accept="audio/*">
-      <audio id="audioPlayer" controls style="display: none;"></audio>
+      <!-- 待播清單 -->
+      <div class="section-title" style="margin-top: 14px; font-size: 0.85rem;">📋 待播清單佇列</div>
+      <div class="playlist-box" id="playlistBox">
+        <div class="empty-list">目前歌單是空的，快貼上伴奏網址加入吧！</div>
+      </div>
     </div>
   </div>
 
@@ -251,62 +274,41 @@
 
   <script>
     /* ====================================================
-       音訊環境初始化 (相容 iOS WebKit 與低延遲設定)
+       1. 音訊核心與麥克風耳返 (Web Audio API)
        ==================================================== */
     let audioCtx = null;
     let micStream = null;
     let micGainNode = null;
     let isMonitoring = false;
 
-    // 本地音樂專屬節點（解決 iOS 無法直接調音量的限制）
-    let musicAudioSource = null;
-    let musicGainNode = null;
-
     const micBtn = document.getElementById('micToggleBtn');
     const micVolSlider = document.getElementById('micVolume');
     const micValDisplay = document.getElementById('micVal');
-
     const musicVolSlider = document.getElementById('musicVolume');
     const musicValDisplay = document.getElementById('musicVal');
-
-    const audioPlayer = document.getElementById('audioPlayer');
 
     async function ensureAudioContext() {
       if (!audioCtx) {
         const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AudioContextClass({
-          latencyHint: 'interactive',
-          sampleRate: 48000
-        });
+        audioCtx = new AudioContextClass({ latencyHint: 'interactive', sampleRate: 48000 });
       }
       if (audioCtx.state === 'suspended') {
         await audioCtx.resume();
       }
     }
 
-    /* ====================================================
-       1. 麥克風耳返控制
-       ==================================================== */
     micBtn.addEventListener('click', async () => {
       await ensureAudioContext();
-
       if (!isMonitoring) {
         try {
           if (!micStream) {
             micStream = await navigator.mediaDevices.getUserMedia({
-              audio: {
-                echoCancellation: false,
-                autoGainControl: false,
-                noiseSuppression: false,
-                latency: 0
-              }
+              audio: { echoCancellation: false, autoGainControl: false, noiseSuppression: false, latency: 0 }
             });
           }
-
           const micSource = audioCtx.createMediaStreamSource(micStream);
           micGainNode = audioCtx.createGain();
           micGainNode.gain.value = parseFloat(micVolSlider.value);
-
           micSource.connect(micGainNode);
           micGainNode.connect(audioCtx.destination);
 
@@ -314,8 +316,7 @@
           micBtn.textContent = '🔊 耳返已開啟（點此關閉）';
           micBtn.classList.add('active');
         } catch (err) {
-          alert('無法開啟麥克風，請確認是否允許使用麥克風！');
-          console.error(err);
+          alert('無法開啟麥克風，請檢查權限！');
         }
       } else {
         if (micStream) {
@@ -328,141 +329,229 @@
       }
     });
 
-    // 麥克風耳返拉桿監聽
     micVolSlider.addEventListener('input', (e) => {
       const val = parseFloat(e.target.value);
       micValDisplay.textContent = Math.round(val * 100) + '%';
-      if (micGainNode) {
-        micGainNode.gain.value = val;
-      }
+      if (micGainNode) micGainNode.gain.value = val;
     });
 
-    /* ====================================================
-       2. 伴奏音量拉桿監聽 (同時接管 YouTube 與本地音檔)
-       ==================================================== */
     musicVolSlider.addEventListener('input', (e) => {
       const val = parseFloat(e.target.value);
       musicValDisplay.textContent = Math.round(val * 100) + '%';
-
-      // 1. 調控 YouTube 音量 (0~100)
       if (ytPlayer && typeof ytPlayer.setVolume === 'function') {
         ytPlayer.setVolume(val * 100);
       }
-
-      // 2. 調控本地 MP3 音量 (透過 Web Audio GainNode 突破 iOS 限制)
-      if (musicGainNode) {
-        musicGainNode.gain.value = val;
-      } else {
-        audioPlayer.volume = val;
-      }
     });
 
     /* ====================================================
-       3. 本地 MP3 上傳與 Web Audio 路由串接
+       2. 播放清單佇列資料結構
        ==================================================== */
-    const fileInput = document.getElementById('fileInput');
+    let playlist = []; // 結構: [{ id: 'xxx', title: 'Song 1' }]
+    let currentSongIndex = -1;
 
-    fileInput.addEventListener('change', async (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        await ensureAudioContext();
+    const playlistBox = document.getElementById('playlistBox');
+    const unmuteTip = document.getElementById('unmuteTip');
 
-        // 停止 YouTube
-        if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
-          ytPlayer.pauseVideo();
-        }
-
-        const fileURL = URL.createObjectURL(file);
-        audioPlayer.src = fileURL;
-        audioPlayer.style.display = 'block';
-
-        // 建立 Web Audio 增益節點接管音量（第一次選歌時初始化）
-        if (!musicAudioSource) {
-          try {
-            musicAudioSource = audioCtx.createMediaElementSource(audioPlayer);
-            musicGainNode = audioCtx.createGain();
-            musicGainNode.gain.value = parseFloat(musicVolSlider.value);
-
-            musicAudioSource.connect(musicGainNode);
-            musicGainNode.connect(audioCtx.destination);
-          } catch (err) {
-            console.warn('音訊路由已建立或受安全性限制', err);
-          }
-        }
-
-        audioPlayer.play();
+    function renderPlaylist() {
+      if (playlist.length === 0) {
+        playlistBox.innerHTML = '<div class="empty-list">目前歌單是空的，快貼上伴奏網址加入吧！</div>';
+        return;
       }
-    });
+      let html = '';
+      playlist.forEach((item, index) => {
+        let tag = '';
+        let className = 'playlist-item';
+        if (index === currentSongIndex) {
+          tag = '【正在播放】';
+          className += ' current';
+        } else if (index === currentSongIndex + 1) {
+          tag = '【下一首】';
+        } else {
+          tag = `#${index + 1}`;
+        }
+        html += `<div class="${className}"><span>${tag} ${item.title || item.id}</span></div>`;
+      });
+      playlistBox.innerHTML = html;
+    }
 
     /* ====================================================
-       4. YouTube 播放器與同步控制
+       3. YouTube 播放器與多端同步
        ==================================================== */
     let ytPlayer = null;
-    const ytUrlInput = document.getElementById('ytUrlInput');
-    const loadYtBtn = document.getElementById('loadYtBtn');
+    let isPlayerReady = false;
     const videoWrapper = document.getElementById('videoWrapper');
+    const ytUrlInput = document.getElementById('ytUrlInput');
+    const addQueueBtn = document.getElementById('addQueueBtn');
+    const nextSongBtn = document.getElementById('nextSongBtn');
 
     function extractVideoID(url) {
-      const regExp = /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/;
-      const match = url.match(regExp);
+      const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
       return match ? match[1] : null;
     }
 
-    function playVideoById(videoId) {
-      videoWrapper.style.display = 'block';
-      audioPlayer.pause(); // 暫停本地音樂
-
-      if (!ytPlayer) {
-        ytPlayer = new YT.Player('ytPlayer', {
-          videoId: videoId,
-          playerVars: {
-            autoplay: 1,
-            playsinline: 1,
-            enablejsapi: 1,
-            origin: window.location.origin || '*'
+    // 初始化 YouTube 播放器
+    window.onYouTubeIframeAPIReady = function() {
+      ytPlayer = new YT.Player('ytPlayer', {
+        height: '100%',
+        width: '100%',
+        playerVars: {
+          autoplay: 1,
+          playsinline: 1,
+          enablejsapi: 1,
+          origin: window.location.origin || '*'
+        },
+        events: {
+          onReady: (event) => {
+            isPlayerReady = true;
+            event.target.setVolume(parseFloat(musicVolSlider.value) * 100);
           },
-          events: {
-            onReady: (event) => {
-              // 載入即套用當前拉桿音量
-              event.target.setVolume(parseFloat(musicVolSlider.value) * 100);
-              event.target.playVideo();
+          onStateChange: (event) => {
+            // 當歌曲唱完時 (0 = YT.PlayerState.ENDED)，自動播放下一首
+            if (event.data === YT.PlayerState.ENDED) {
+              playNextSong();
             }
           }
-        });
-      } else {
+        }
+      });
+    };
+
+    function playVideo(videoId) {
+      if (!isPlayerReady || !ytPlayer) {
+        setTimeout(() => playVideo(videoId), 500);
+        return;
+      }
+      unmuteTip.style.display = 'block'; // 顯示提示讓手機觸碰解鎖
+
+      try {
         ytPlayer.loadVideoById(videoId);
         ytPlayer.setVolume(parseFloat(musicVolSlider.value) * 100);
+        ytPlayer.playVideo();
+      } catch (e) {
+        console.warn('播放被攔截，等待使用者點擊解鎖', e);
       }
     }
 
-    loadYtBtn.addEventListener('click', () => {
-      const videoId = extractVideoID(ytUrlInput.value.trim());
+    // 解鎖按鈕（iOS / 手機點一下即可強制發聲）
+    unmuteTip.addEventListener('click', () => {
+      if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+        ytPlayer.playVideo();
+        ytPlayer.setVolume(parseFloat(musicVolSlider.value) * 100);
+      }
+      unmuteTip.style.display = 'none';
+    });
+
+    // 播放指定索引的歌曲
+    function playTrackAtIndex(index) {
+      if (index >= 0 && index < playlist.length) {
+        currentSongIndex = index;
+        renderPlaylist();
+        playVideo(playlist[currentSongIndex].id);
+      }
+    }
+
+    // 切歌 / 播下一首
+    function playNextSong() {
+      if (currentSongIndex + 1 < playlist.length) {
+        playTrackAtIndex(currentSongIndex + 1);
+        broadcastState(); // 同步給其他人
+      } else {
+        alert('待播清單已經唱完囉！');
+      }
+    }
+
+    nextSongBtn.addEventListener('click', () => {
+      playNextSong();
+    });
+
+    // 加入歌單
+    addQueueBtn.addEventListener('click', () => {
+      const url = ytUrlInput.value.trim();
+      const videoId = extractVideoID(url);
       if (!videoId) {
-        alert('請輸入有效的 YouTube 網址！');
+        alert('請輸入有效的 YouTube 伴奏連結！');
         return;
       }
-      playVideoById(videoId);
 
-      if (dataConn && dataConn.open) {
-        dataConn.send({ type: 'PLAY_YT', videoId: videoId });
+      const songItem = { id: videoId, title: 'YouTube 伴奏 (' + videoId.substring(0, 5) + ')' };
+      playlist.push(songItem);
+      ytUrlInput.value = '';
+
+      // 若目前沒有歌在播，直接開始播這首
+      if (currentSongIndex === -1) {
+        currentSongIndex = 0;
+        playTrackAtIndex(0);
+      } else {
+        renderPlaylist();
       }
+
+      broadcastState();
     });
 
     /* ====================================================
-       5. PeerJS 雙人連線包廂
+       4. PeerJS 雙向多端同步網路層
        ==================================================== */
     let peer = null;
-    let dataConn = null;
+    let connections = []; // 保存所有連線中的頻道
     const roomStatus = document.getElementById('roomStatus');
     const createRoomBtn = document.getElementById('createRoomBtn');
     const joinRoomBtn = document.getElementById('joinRoomBtn');
     const joinRoomInput = document.getElementById('joinRoomInput');
     const remoteAudio = document.getElementById('remoteAudio');
 
+    // 廣播最新歌單與播放進度給包廂所有人
+    function broadcastState() {
+      const payload = {
+        type: 'SYNC_STATE',
+        playlist: playlist,
+        currentSongIndex: currentSongIndex
+      };
+      connections.forEach(conn => {
+        if (conn && conn.open) {
+          conn.send(payload);
+        }
+      });
+    }
+
+    function handleIncomingData(data) {
+      if (data.type === 'SYNC_STATE') {
+        playlist = data.playlist || [];
+        const prevIndex = currentSongIndex;
+        currentSongIndex = data.currentSongIndex;
+        renderPlaylist();
+
+        // 如果歌曲切換了，同步載入播放
+        if (currentSongIndex !== -1 && currentSongIndex !== prevIndex) {
+          if (playlist[currentSongIndex]) {
+            playVideo(playlist[currentSongIndex].id);
+          }
+        }
+      }
+    }
+
+    function setupDataConnection(conn) {
+      connections.push(conn);
+      conn.on('open', () => {
+        roomStatus.textContent = '🟢 已成功建立雙向包廂同步！';
+        // 一連線立刻把目前的歌單同步給新加入的人
+        conn.send({
+          type: 'SYNC_STATE',
+          playlist: playlist,
+          currentSongIndex: currentSongIndex
+        });
+      });
+      conn.on('data', (data) => {
+        handleIncomingData(data);
+      });
+      conn.on('close', () => {
+        connections = connections.filter(c => c !== conn);
+      });
+    }
+
     function setupPeer() {
       if (!peer) {
         peer = new Peer();
 
+        // 接收語音通話
         peer.on('call', async (call) => {
           await ensureAudioContext();
           if (!micStream) {
@@ -476,21 +565,22 @@
           });
         });
 
+        // 接收資料頻道 (房長接收手機端的連線)
         peer.on('connection', (conn) => {
-          dataConn = conn;
-          setupDataListener();
-          roomStatus.textContent = '🟢 好友已加入包廂！';
+          setupDataConnection(conn);
         });
       }
     }
 
+    // 房長建立包廂
     createRoomBtn.addEventListener('click', () => {
       setupPeer();
       peer.on('open', (id) => {
-        roomStatus.innerHTML = `包廂已建立！請分享代碼：<br><strong style="color:#ff3366;font-size:1.1rem;">${id}</strong>`;
+        roomStatus.innerHTML = `包廂已建立！手機請輸入此代碼：<br><strong style="color:#ff3366;font-size:1.15rem;">${id}</strong>`;
       });
     });
 
+    // 手機加入包廂
     joinRoomBtn.addEventListener('click', async () => {
       const targetId = joinRoomInput.value.trim();
       if (!targetId) {
@@ -505,24 +595,18 @@
         });
       }
 
-      dataConn = peer.connect(targetId);
-      setupDataListener();
+      // 建立同步頻道
+      const conn = peer.connect(targetId);
+      setupDataConnection(conn);
 
+      // 發起麥克風對講通話
       const call = peer.call(targetId, micStream);
       call.on('stream', (remoteStream) => {
         remoteAudio.srcObject = remoteStream;
       });
 
-      roomStatus.textContent = `🟢 已成功連線至包廂：${targetId}`;
+      roomStatus.textContent = `🟢 已連線至包廂：${targetId}`;
     });
-
-    function setupDataListener() {
-      dataConn.on('data', (data) => {
-        if (data.type === 'PLAY_YT') {
-          playVideoById(data.videoId);
-        }
-      });
-    }
   </script>
 </body>
 </html>
